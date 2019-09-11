@@ -17,6 +17,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        //this copies the populated embedded database if it doesn't already exist
+        //        self.myCoreDataManager.preloadDBData()
+        
+        // Sets background to a blank/empty image
+        //        Fabric.with([Crashlytics.self, Digits.self])
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        // Sets shadow (line below the bar) to a blank image
+        UINavigationBar.appearance().shadowImage = UIImage()
+        // Sets the translucent background color
+        UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        // Set translucent. (Default value is already true, so this can be removed if desired.)
+        UINavigationBar.appearance().isTranslucent = true
+        
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes=[NSAttributedStringKey.foregroundColor:UIColor.white]
+        
+        //Mark:  hide navigation bar button "back"
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), for:UIBarMetrics.default)
         return true
     }
 
@@ -42,6 +62,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+
+    // MARK: - Core Data stack
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        if userActivity.activityType == CSSearchableItemActionType {
+            if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+                if let navigationController = window?.rootViewController as? UINavigationController {
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                }
+            }
+        }
+        return true
     }
 
     // MARK: - Core Data stack
@@ -88,6 +120,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    public func createResources()->Void {
+        if self.fetchedResource().count > 0 {
+            return;
+        }
+        let managedContext = self.getManagedContext()
+        self.importPlants()
+        self.saveContext()
+        return
+    }
+    
 }
+
+extension Data {
+    var string: String {
+        return String(data: self, encoding: .utf8) ?? ""
+    }
+}
+extension String {
+    var data: Data {
+        return Data(utf8)
+    }
+    var base64Decoded: Data? {
+        return Data(base64Encoded: self)
+    }
+}
+
+
+
 

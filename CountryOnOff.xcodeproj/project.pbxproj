@@ -15,6 +15,8 @@
 		56280A8323299A2F0054F077 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56280A8123299A2F0054F077 /* LaunchScreen.storyboard */; };
 		56280A8E23299A300054F077 /* CountryOnOffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280A8D23299A300054F077 /* CountryOnOffTests.swift */; };
 		56280A9923299A300054F077 /* CountryOnOffUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280A9823299A300054F077 /* CountryOnOffUITests.swift */; };
+		56280AA82329ACC20054F077 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56280AA72329ACC10054F077 /* MessageUI.framework */; };
+		56280AAD2329AF070054F077 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AAC2329AF060054F077 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,9 @@
 		56280A9423299A300054F077 /* CountryOnOffUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryOnOffUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56280A9823299A300054F077 /* CountryOnOffUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryOnOffUITests.swift; sourceTree = "<group>"; };
 		56280A9A23299A300054F077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56280AA72329ACC10054F077 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		56280AA92329AD130054F077 /* SwipeCellKit-develop */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "SwipeCellKit-develop"; path = "../../../Downloads/SwipeCellKit-develop"; sourceTree = "<group>"; };
+		56280AAC2329AF060054F077 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = CountryOnOff/CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56280AA82329ACC20054F077 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,10 +85,12 @@
 		56280A6923299A2F0054F077 = {
 			isa = PBXGroup;
 			children = (
+				56280AAC2329AF060054F077 /* CoreDataManager.swift */,
 				56280A7423299A2F0054F077 /* CountryOnOff */,
 				56280A8C23299A300054F077 /* CountryOnOffTests */,
 				56280A9723299A300054F077 /* CountryOnOffUITests */,
 				56280A7323299A2F0054F077 /* Products */,
+				56280AA62329ACC10054F077 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +134,15 @@
 				56280A9A23299A300054F077 /* Info.plist */,
 			);
 			path = CountryOnOffUITests;
+			sourceTree = "<group>";
+		};
+		56280AA62329ACC10054F077 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56280AA92329AD130054F077 /* SwipeCellKit-develop */,
+				56280AA72329ACC10054F077 /* MessageUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +281,7 @@
 			files = (
 				56280A7E23299A2F0054F077 /* CountryOnOff.xcdatamodeld in Sources */,
 				56280A7823299A2F0054F077 /* ViewController.swift in Sources */,
+				56280AAD2329AF070054F077 /* CoreDataManager.swift in Sources */,
 				56280A7623299A2F0054F077 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
