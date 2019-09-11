@@ -1,24 +1,247 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GFg-At-pwL">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Domus-Regular.otf">
+            <string>Domus-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Places-->
+        <scene sceneID="T85-2j-n0a">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="dJp-H4-5do" customClass="PlacesViewController" customModule="CountryOnOff" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6bz-l0-d7W"/>
+                        <viewControllerLayoutGuide type="bottom" id="6mN-dV-oh4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EyD-JT-9UZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Search country" translatesAutoresizingMaskIntoConstraints="NO" id="hKZ-3Q-cN5">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="UEC-CE-e0C"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dJp-H4-5do" id="BT9-Iy-c0x"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qAC-9b-sx6">
+                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="placeCell" rowHeight="60" id="aZq-kz-jOo" customClass="PlaceTableViewCell" customModule="CountryOnOff" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aZq-kz-jOo" id="HpG-GV-jtI">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N55-lZ-mKD">
+                                                    <rect key="frame" x="65" y="10" width="290" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="yPr-1s-leM"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Domus-Regular" family="Domus" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeslocationicon" translatesAutoresizingMaskIntoConstraints="NO" id="225-Vk-4ci">
+                                                    <rect key="frame" x="20" y="12.5" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="CuE-MA-3sC"/>
+                                                        <constraint firstAttribute="height" constant="35" id="nn6-8g-Fto"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="N55-lZ-mKD" firstAttribute="centerY" secondItem="HpG-GV-jtI" secondAttribute="centerY" id="18P-AQ-rd2"/>
+                                                <constraint firstAttribute="trailing" secondItem="N55-lZ-mKD" secondAttribute="trailing" constant="20" id="OJO-nz-YSg"/>
+                                                <constraint firstItem="N55-lZ-mKD" firstAttribute="leading" secondItem="225-Vk-4ci" secondAttribute="trailing" constant="10" id="cLP-Nf-yWD"/>
+                                                <constraint firstItem="225-Vk-4ci" firstAttribute="centerY" secondItem="HpG-GV-jtI" secondAttribute="centerY" id="uo2-8c-gxM"/>
+                                                <constraint firstItem="225-Vk-4ci" firstAttribute="leading" secondItem="HpG-GV-jtI" secondAttribute="leading" constant="20" id="zpc-Cr-Ubm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="placeImgView" destination="225-Vk-4ci" id="pzD-jD-FBL"/>
+                                            <outlet property="placeLbl" destination="N55-lZ-mKD" id="krr-WM-Wka"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="dJp-H4-5do" id="4XJ-Df-kHu"/>
+                                    <outlet property="delegate" destination="dJp-H4-5do" id="gbB-C2-7Zw"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qAC-9b-sx6" secondAttribute="trailing" id="4uU-nD-frQ"/>
+                            <constraint firstItem="qAC-9b-sx6" firstAttribute="top" secondItem="hKZ-3Q-cN5" secondAttribute="bottom" id="84W-mF-BvH"/>
+                            <constraint firstItem="qAC-9b-sx6" firstAttribute="leading" secondItem="EyD-JT-9UZ" secondAttribute="leading" id="POz-aC-okH"/>
+                            <constraint firstItem="hKZ-3Q-cN5" firstAttribute="top" secondItem="6bz-l0-d7W" secondAttribute="bottom" id="V4g-32-TbG"/>
+                            <constraint firstItem="6mN-dV-oh4" firstAttribute="top" secondItem="qAC-9b-sx6" secondAttribute="bottom" id="bU8-sD-cGm"/>
+                            <constraint firstAttribute="trailing" secondItem="hKZ-3Q-cN5" secondAttribute="trailing" id="qGg-1O-uBR"/>
+                            <constraint firstItem="hKZ-3Q-cN5" firstAttribute="leading" secondItem="EyD-JT-9UZ" secondAttribute="leading" id="uXD-zI-jDz"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Places" image="Places off" selectedImage="Places on" id="nPp-UK-DLo" customClass="RAMAnimatedTabBarItem" customModule="CountryOnOff" customModuleProvider="target">
+                        <connections>
+                            <outlet property="animation" destination="MAT-nd-pRh" id="0cx-H6-vJg"/>
+                        </connections>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="searchBar" destination="hKZ-3Q-cN5" id="7jw-t9-aQf"/>
+                        <outlet property="tableView" destination="qAC-9b-sx6" id="nNy-tA-dU9"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2X-6o-aOt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="MAT-nd-pRh" customClass="RAMBounceAnimation" customModule="CountryOnOff" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" red="0.95686274510000002" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.95686274510000002" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
+            <point key="canvasLocation" x="1764" y="309.89505247376314"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="O3u-Zs-6Mv">
+            <objects>
+                <viewController id="0yh-f3-hyZ" customClass="SettingsViewController" customModule="CountryOnOff" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4IH-1u-HpQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="bhn-xF-Sj6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZTy-c3-i1D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings off" selectedImage="Settings On" id="VOY-Kf-8OJ" customClass="RAMAnimatedTabBarItem" customModule="CountryOnOff" customModuleProvider="target">
+                        <connections>
+                            <outlet property="animation" destination="Lky-aQ-fpI" id="KIi-s3-qFb"/>
+                        </connections>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ncZ-aI-Kci" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Lky-aQ-fpI" customClass="RAMBounceAnimation" customModule="CountryOnOff" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" red="0.95686274510000002" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.95686274510000002" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="1318" y="1080"/>
+        </scene>
+        <!--My location-->
+        <scene sceneID="Kw2-UG-7ua">
+            <objects>
+                <viewController id="tAs-1H-y1e" customClass="MyLocationViewController" customModule="CountryOnOff" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j1r-zi-7ug"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kku-og-42m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mun-fb-pDq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My location" image="My location off" selectedImage="My Locations On" id="d4P-Pa-9sD" customClass="RAMAnimatedTabBarItem" customModule="CountryOnOff" customModuleProvider="target">
+                        <connections>
+                            <outlet property="animation" destination="xBy-wV-kzy" id="8UM-vj-iBQ"/>
+                        </connections>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U3i-mE-INH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="xBy-wV-kzy" customClass="RAMBounceAnimation" customModule="CountryOnOff" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" red="0.95686274510000002" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.95686274510000002" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="290" y="1091"/>
+        </scene>
+        <!--Animated Tab Bar Controller-->
+        <scene sceneID="Nml-oJ-erW">
+            <objects>
+                <tabBarController id="gX2-5j-ERi" customClass="RAMAnimatedTabBarController" customModule="CountryOnOff" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZNV-dj-wL7"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="tns-Hz-bGw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.95686274510000002" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.95686274510000002" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dJp-H4-5do" kind="relationship" relationship="viewControllers" id="UdE-7i-B3t"/>
+                        <segue destination="0yh-f3-hyZ" kind="relationship" relationship="viewControllers" id="Dxe-jf-P9x"/>
+                        <segue destination="tAs-1H-y1e" kind="relationship" relationship="viewControllers" id="XPT-49-NYQ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XU2-cM-zOK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="812" y="-18"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bru-Rd-Sqt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GFg-At-pwL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eHR-TI-8YS">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gX2-5j-ERi" kind="relationship" relationship="rootViewController" id="uIT-PT-brs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzD-qd-t7p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-374" y="-18"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="My Locations On" width="24" height="24"/>
+        <image name="My location off" width="24" height="24"/>
+        <image name="Places off" width="24" height="24"/>
+        <image name="Places on" width="24" height="24"/>
+        <image name="Placeslocationicon" width="48" height="48"/>
+        <image name="Settings On" width="24" height="24"/>
+        <image name="Settings off" width="24" height="24"/>
+    </resources>
 </document>
