@@ -17,6 +17,7 @@
 		56280A9923299A300054F077 /* CountryOnOffUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280A9823299A300054F077 /* CountryOnOffUITests.swift */; };
 		56280AA82329ACC20054F077 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56280AA72329ACC10054F077 /* MessageUI.framework */; };
 		56280AAD2329AF070054F077 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AAC2329AF060054F077 /* CoreDataManager.swift */; };
+		56280AAF2329B04B0054F077 /* SwiftDebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AAE2329B04A0054F077 /* SwiftDebugLog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +53,8 @@
 		56280A9823299A300054F077 /* CountryOnOffUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryOnOffUITests.swift; sourceTree = "<group>"; };
 		56280A9A23299A300054F077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56280AA72329ACC10054F077 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		56280AA92329AD130054F077 /* SwipeCellKit-develop */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "SwipeCellKit-develop"; path = "../../../Downloads/SwipeCellKit-develop"; sourceTree = "<group>"; };
 		56280AAC2329AF060054F077 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = CountryOnOff/CoreDataManager.swift; sourceTree = "<group>"; };
+		56280AAE2329B04A0054F077 /* SwiftDebugLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDebugLog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +110,7 @@
 			children = (
 				56280A7523299A2F0054F077 /* AppDelegate.swift */,
 				56280A7723299A2F0054F077 /* ViewController.swift */,
+				56280AAE2329B04A0054F077 /* SwiftDebugLog.swift */,
 				56280A7923299A2F0054F077 /* Main.storyboard */,
 				56280A7F23299A2F0054F077 /* Assets.xcassets */,
 				56280A8123299A2F0054F077 /* LaunchScreen.storyboard */,
@@ -139,7 +141,6 @@
 		56280AA62329ACC10054F077 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				56280AA92329AD130054F077 /* SwipeCellKit-develop */,
 				56280AA72329ACC10054F077 /* MessageUI.framework */,
 			);
 			name = Frameworks;
@@ -280,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56280A7E23299A2F0054F077 /* CountryOnOff.xcdatamodeld in Sources */,
+				56280AAF2329B04B0054F077 /* SwiftDebugLog.swift in Sources */,
 				56280A7823299A2F0054F077 /* ViewController.swift in Sources */,
 				56280AAD2329AF070054F077 /* CoreDataManager.swift in Sources */,
 				56280A7623299A2F0054F077 /* AppDelegate.swift in Sources */,
