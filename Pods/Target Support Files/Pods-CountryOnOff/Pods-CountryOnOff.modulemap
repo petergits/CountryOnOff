@@ -1,0 +1,6 @@
+framework module Pods_CountryOnOff {
+  umbrella header "Pods-CountryOnOff-umbrella.h"
+
+  export *
+  module * { export * }
+}
