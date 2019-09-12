@@ -2,7 +2,7 @@
 //  CountryOnOffTests.swift
 //  CountryOnOffTests
 //
-//  Created by Peter Adient Gits on 9/11/19.
+//  Created by Peter Gits on 9/11/19.
 //  Copyright © 2019 GeekGaps. All rights reserved.
 //
 

@@ -10,7 +10,7 @@
 		56280A7623299A2F0054F077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280A7523299A2F0054F077 /* AppDelegate.swift */; };
 		56280A7823299A2F0054F077 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280A7723299A2F0054F077 /* ViewController.swift */; };
 		56280A7B23299A2F0054F077 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56280A7923299A2F0054F077 /* Main.storyboard */; };
-		56280A7E23299A2F0054F077 /* CountryOnOff.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56280A7C23299A2F0054F077 /* CountryOnOff.xcdatamodeld */; };
+		56280A7E23299A2F0054F077 /* CountryStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56280A7C23299A2F0054F077 /* CountryStore.xcdatamodeld */; };
 		56280A8023299A2F0054F077 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56280A7F23299A2F0054F077 /* Assets.xcassets */; };
 		56280A8323299A2F0054F077 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56280A8123299A2F0054F077 /* LaunchScreen.storyboard */; };
 		56280A8E23299A300054F077 /* CountryOnOffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280A8D23299A300054F077 /* CountryOnOffTests.swift */; };
@@ -18,6 +18,17 @@
 		56280AA82329ACC20054F077 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56280AA72329ACC10054F077 /* MessageUI.framework */; };
 		56280AAD2329AF070054F077 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AAC2329AF060054F077 /* CoreDataManager.swift */; };
 		56280AAF2329B04B0054F077 /* SwiftDebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AAE2329B04A0054F077 /* SwiftDebugLog.swift */; };
+		56280AB32329C5170054F077 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AB22329C5170054F077 /* CountriesViewController.swift */; };
+		56280AB52329C71A0054F077 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AB42329C71A0054F077 /* CountryTableViewCell.swift */; };
+		56280AB72329C7600054F077 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AB62329C7600054F077 /* SettingsViewController.swift */; };
+		56280AC12329C8ED0054F077 /* RAMBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AB92329C8EC0054F077 /* RAMBadge.swift */; };
+		56280AC22329C8ED0054F077 /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280ABA2329C8EC0054F077 /* RAMBounceAnimation.swift */; };
+		56280AC32329C8ED0054F077 /* RAMRotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280ABB2329C8EC0054F077 /* RAMRotationAnimation.swift */; };
+		56280AC42329C8ED0054F077 /* RAMTransitionItemAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280ABC2329C8EC0054F077 /* RAMTransitionItemAnimations.swift */; };
+		56280AC52329C8ED0054F077 /* RAMFumeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280ABD2329C8EC0054F077 /* RAMFumeAnimation.swift */; };
+		56280AC62329C8ED0054F077 /* RAMFrameItemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280ABE2329C8ED0054F077 /* RAMFrameItemAnimation.swift */; };
+		56280AC72329C8ED0054F077 /* RAMItemAnimationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280ABF2329C8ED0054F077 /* RAMItemAnimationProtocol.swift */; };
+		56280AC82329C8ED0054F077 /* RAMAnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AC02329C8ED0054F077 /* RAMAnimatedTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +66,17 @@
 		56280AA72329ACC10054F077 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		56280AAC2329AF060054F077 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = CountryOnOff/CoreDataManager.swift; sourceTree = "<group>"; };
 		56280AAE2329B04A0054F077 /* SwiftDebugLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDebugLog.swift; sourceTree = "<group>"; };
+		56280AB22329C5170054F077 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
+		56280AB42329C71A0054F077 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryTableViewCell.swift; path = CountryOnOff/CountryTableViewCell.swift; sourceTree = "<group>"; };
+		56280AB62329C7600054F077 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		56280AB92329C8EC0054F077 /* RAMBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBadge.swift; sourceTree = "<group>"; };
+		56280ABA2329C8EC0054F077 /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
+		56280ABB2329C8EC0054F077 /* RAMRotationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMRotationAnimation.swift; sourceTree = "<group>"; };
+		56280ABC2329C8EC0054F077 /* RAMTransitionItemAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMTransitionItemAnimations.swift; sourceTree = "<group>"; };
+		56280ABD2329C8EC0054F077 /* RAMFumeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFumeAnimation.swift; sourceTree = "<group>"; };
+		56280ABE2329C8ED0054F077 /* RAMFrameItemAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFrameItemAnimation.swift; sourceTree = "<group>"; };
+		56280ABF2329C8ED0054F077 /* RAMItemAnimationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMItemAnimationProtocol.swift; sourceTree = "<group>"; };
+		56280AC02329C8ED0054F077 /* RAMAnimatedTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMAnimatedTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +108,10 @@
 		56280A6923299A2F0054F077 = {
 			isa = PBXGroup;
 			children = (
+				56280AB82329C8A90054F077 /* TabbarAnimiation */,
+				56280AB62329C7600054F077 /* SettingsViewController.swift */,
+				56280AB42329C71A0054F077 /* CountryTableViewCell.swift */,
+				56280AB22329C5170054F077 /* CountriesViewController.swift */,
 				56280AAC2329AF060054F077 /* CoreDataManager.swift */,
 				56280A7423299A2F0054F077 /* CountryOnOff */,
 				56280A8C23299A300054F077 /* CountryOnOffTests */,
@@ -115,7 +141,7 @@
 				56280A7F23299A2F0054F077 /* Assets.xcassets */,
 				56280A8123299A2F0054F077 /* LaunchScreen.storyboard */,
 				56280A8423299A2F0054F077 /* Info.plist */,
-				56280A7C23299A2F0054F077 /* CountryOnOff.xcdatamodeld */,
+				56280A7C23299A2F0054F077 /* CountryStore.xcdatamodeld */,
 			);
 			path = CountryOnOff;
 			sourceTree = "<group>";
@@ -144,6 +170,21 @@
 				56280AA72329ACC10054F077 /* MessageUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		56280AB82329C8A90054F077 /* TabbarAnimiation */ = {
+			isa = PBXGroup;
+			children = (
+				56280AC02329C8ED0054F077 /* RAMAnimatedTabBarController.swift */,
+				56280AB92329C8EC0054F077 /* RAMBadge.swift */,
+				56280ABA2329C8EC0054F077 /* RAMBounceAnimation.swift */,
+				56280ABE2329C8ED0054F077 /* RAMFrameItemAnimation.swift */,
+				56280ABD2329C8EC0054F077 /* RAMFumeAnimation.swift */,
+				56280ABF2329C8ED0054F077 /* RAMItemAnimationProtocol.swift */,
+				56280ABB2329C8EC0054F077 /* RAMRotationAnimation.swift */,
+				56280ABC2329C8EC0054F077 /* RAMTransitionItemAnimations.swift */,
+			);
+			path = TabbarAnimiation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,11 +321,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56280A7E23299A2F0054F077 /* CountryOnOff.xcdatamodeld in Sources */,
+				56280A7E23299A2F0054F077 /* CountryStore.xcdatamodeld in Sources */,
 				56280AAF2329B04B0054F077 /* SwiftDebugLog.swift in Sources */,
 				56280A7823299A2F0054F077 /* ViewController.swift in Sources */,
+				56280AC32329C8ED0054F077 /* RAMRotationAnimation.swift in Sources */,
+				56280AC62329C8ED0054F077 /* RAMFrameItemAnimation.swift in Sources */,
 				56280AAD2329AF070054F077 /* CoreDataManager.swift in Sources */,
+				56280AC12329C8ED0054F077 /* RAMBadge.swift in Sources */,
 				56280A7623299A2F0054F077 /* AppDelegate.swift in Sources */,
+				56280AB52329C71A0054F077 /* CountryTableViewCell.swift in Sources */,
+				56280AC22329C8ED0054F077 /* RAMBounceAnimation.swift in Sources */,
+				56280AB32329C5170054F077 /* CountriesViewController.swift in Sources */,
+				56280AC52329C8ED0054F077 /* RAMFumeAnimation.swift in Sources */,
+				56280AB72329C7600054F077 /* SettingsViewController.swift in Sources */,
+				56280AC82329C8ED0054F077 /* RAMAnimatedTabBarController.swift in Sources */,
+				56280AC42329C8ED0054F077 /* RAMTransitionItemAnimations.swift in Sources */,
+				56280AC72329C8ED0054F077 /* RAMItemAnimationProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,13 +638,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		56280A7C23299A2F0054F077 /* CountryOnOff.xcdatamodeld */ = {
+		56280A7C23299A2F0054F077 /* CountryStore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				56280A7D23299A2F0054F077 /* CountryOnOff.xcdatamodel */,
 			);
 			currentVersion = 56280A7D23299A2F0054F077 /* CountryOnOff.xcdatamodel */;
-			path = CountryOnOff.xcdatamodeld;
+			path = CountryStore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
