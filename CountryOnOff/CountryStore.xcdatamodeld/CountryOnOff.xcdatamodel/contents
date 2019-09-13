@@ -30,8 +30,11 @@
         <attribute name="numericCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="population" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="storedOffline" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="subregion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="topLevelDomain" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="borders" toMany="YES" deletionRule="Nullify" destinationEntity="BordersEntity" syncable="YES"/>
+        <relationship name="gps" toMany="YES" deletionRule="Nullify" destinationEntity="CountryLatLongEntity" syncable="YES"/>
     </entity>
     <entity name="CountryLatLongEntity" representedClassName="CountryLatLongEntity" syncable="YES" codeGenerationType="class">
         <attribute name="attribute" optional="YES" syncable="YES"/>
@@ -107,7 +110,7 @@
         </fetchIndex>
     </entity>
     <elements>
-        <element name="CountryEntity" positionX="-29" positionY="-306" width="128" height="330"/>
+        <element name="CountryEntity" positionX="-393.21484375" positionY="-5461.58984375" width="128" height="373"/>
         <element name="UserDeviceDetailsEntity" positionX="52" positionY="36" width="128" height="495"/>
         <element name="CountryLatLongEntity" positionX="9" positionY="-153" width="128" height="135"/>
         <element name="AlternateSpellingEntity" positionX="18" positionY="-144" width="128" height="75"/>
@@ -117,6 +120,6 @@
         <element name="CurrenciesEntity" positionX="54" positionY="-108" width="128" height="105"/>
         <element name="LanguagesEntity" positionX="63" positionY="-99" width="128" height="120"/>
         <element name="TransalationsEntity" positionX="18" positionY="-153" width="128" height="90"/>
-        <element name="RegionalBlocksEntity" positionX="27" positionY="-144" width="128" height="90"/>
+        <element name="RegionalBlocksEntity" positionX="-81.3515625" positionY="-474.73046875" width="128" height="90"/>
     </elements>
 </model>

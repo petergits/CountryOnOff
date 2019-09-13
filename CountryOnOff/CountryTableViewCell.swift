@@ -9,11 +9,11 @@
 import UIKit
 import SwipeCellKit
 
-class PlaceTableViewCell: SwipeTableViewCell {
+class CountryTableViewCell: SwipeTableViewCell {
     
-    @IBOutlet weak var placeImgView: UIImageView!
+    @IBOutlet weak var flagImgView: UIImageView!
     
-    @IBOutlet weak var placeLbl: UILabel!
+    @IBOutlet weak var countryLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

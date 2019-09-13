@@ -23,17 +23,17 @@ class CountriesViewController: UIViewController {
     var buttonStyle: ButtonStyle = .circular
     
     //MARK: fetch request init
-    var fetchRequest: NSFetchRequest<ResourceCategoryEntity> = ResourceCategoryEntity.fetchRequest()
+    var fetchRequest: NSFetchRequest<CountryEntity> = CountryEntity.fetchRequest()
     
     public let persistentContainer = NSPersistentContainer(name: "CountryStore")
     
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<ResourceCategoryEntity> = {
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<CountryEntity> = {
         // Create Fetch Request
-        let fetchRequest: NSFetchRequest<ResourceCategoryEntity> = ResourceCategoryEntity.fetchRequest()
+        let fetchRequest: NSFetchRequest<CountryEntity> = CountryEntity.fetchRequest()
         
         // Configure Fetch Request
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(ResourceCategoryEntity.name), ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "type == 'plant' || type == 'building'")
+        fetchRequest.predicate = NSPredicate(format: "storedFlag == true")
         
         // Create Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: #keyPath(ResourceCategoryEntity.name), cacheName: nil)
@@ -93,7 +93,7 @@ class CountriesViewController: UIViewController {
     
     // MARK: - Notification Handling
     
-    func applicationDidEnterBackground(_ notification: Notification) {
+    @objc func applicationDidEnterBackground(_ notification: Notification) {
         do {
             try persistentContainer.viewContext.save()
         } catch {
@@ -232,7 +232,7 @@ extension CountriesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell", for: indexPath) as? PlaceTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath) as? CountryTableViewCell else {
             fatalError("Unexpected Index Path")
         }
         
@@ -243,12 +243,12 @@ extension CountriesViewController: UITableViewDataSource {
         return cell
     }
     
-    func configure(_ cell: PlaceTableViewCell, at indexPath: IndexPath) {
+    func configure(_ cell: CountryTableViewCell, at indexPath: IndexPath) {
         // Fetch Quote
-        let place = fetchedResultsController.object(at: indexPath)
+        let theCountry = fetchedResultsController.object(at: indexPath)
         
         // Configure Cell
-        cell.placeLbl.text = place.name!
+        cell.countryLbl.text = theCountry.name!
         
         
         
@@ -263,13 +263,14 @@ extension CountriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //select action
         searchBar.resignFirstResponder()
-        let currentPlace = fetchedResultsController.object(at: indexPath)
+        let currentCountry = fetchedResultsController.object(at: indexPath)
         
-        if (currentPlace.type == "plant") {
-            let lat = currentPlace.plants?.plantAddress?.gpsLatitude
-            let long = currentPlace.plants?.plantAddress?.gpsLongitude
-            let placeStr = (currentPlace.plants?.plantAddress?.city!)! + " " + (currentPlace.plants?.plantAddress?.streetName1)!
-            openMapForPlace(lat: lat!, long: long!, placeName: placeStr)
+        if (currentCountry.storedFlag == true) {
+            let lat = currentCountry.name?.lat
+            let long = currentPlace.name?.long
+            let flagUrl = currentCountry.name.flag
+            let flagImg = currentCountry.name.flagImage
+            //openMapForPlace(lat: lat!, long: long!, placeName: placeStr)
         } else {
             let alert = UIAlertController(title: "Alert", message: "No GPS information current", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.default, handler: nil))
