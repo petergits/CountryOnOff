@@ -31,6 +31,7 @@
 		56280AC82329C8ED0054F077 /* RAMAnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AC02329C8ED0054F077 /* RAMAnimatedTabBarController.swift */; };
 		56280ACA2329CA570054F077 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56280AC92329CA570054F077 /* MapKit.framework */; };
 		56A3F96A232C220F00C268B7 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A3F969232C220F00C268B7 /* SwipeCellKit.framework */; };
+		56A80F39232C48D900C7AF40 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 56A80F38232C48D900C7AF40 /* countries.json */; };
 		8BE532ABD1350A59B343F590 /* Pods_CountryOnOffUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903D4C7E64B0CD89B996A9FB /* Pods_CountryOnOffUITests.framework */; };
 		C3537F081CF824D847E07BB4 /* Pods_CountryOnOffTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7A890566BF9CCFF3405ED5 /* Pods_CountryOnOffTests.framework */; };
 		EFCE807A054FDFB5A78404E0 /* Pods_CountryOnOff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A847FE201E88D79F9C83DB2F /* Pods_CountryOnOff.framework */; };
@@ -88,6 +89,7 @@
 		56280AC02329C8ED0054F077 /* RAMAnimatedTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMAnimatedTabBarController.swift; sourceTree = "<group>"; };
 		56280AC92329CA570054F077 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		56A3F969232C220F00C268B7 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
+		56A80F38232C48D900C7AF40 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		5B14A852F368EECB4D8944C1 /* Pods-CountryOnOff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryOnOff.release.xcconfig"; path = "Target Support Files/Pods-CountryOnOff/Pods-CountryOnOff.release.xcconfig"; sourceTree = "<group>"; };
 		8B1D7D8CC3CE3DB6F9BB372B /* Pods-CountryOnOffTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryOnOffTests.release.xcconfig"; path = "Target Support Files/Pods-CountryOnOffTests/Pods-CountryOnOffTests.release.xcconfig"; sourceTree = "<group>"; };
 		903D4C7E64B0CD89B996A9FB /* Pods_CountryOnOffUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryOnOffUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +163,7 @@
 				56280AAE2329B04A0054F077 /* SwiftDebugLog.swift */,
 				56280A7923299A2F0054F077 /* Main.storyboard */,
 				56280A7F23299A2F0054F077 /* Assets.xcassets */,
+				56A80F38232C48D900C7AF40 /* countries.json */,
 				56280A8123299A2F0054F077 /* LaunchScreen.storyboard */,
 				56280A8423299A2F0054F077 /* Info.plist */,
 				56280A7C23299A2F0054F077 /* CountryStore.xcdatamodeld */,
@@ -348,6 +351,7 @@
 			files = (
 				56280A8323299A2F0054F077 /* LaunchScreen.storyboard in Resources */,
 				56280A8023299A2F0054F077 /* Assets.xcassets in Resources */,
+				56A80F39232C48D900C7AF40 /* countries.json in Resources */,
 				56280A7B23299A2F0054F077 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,7 +572,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -621,7 +625,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

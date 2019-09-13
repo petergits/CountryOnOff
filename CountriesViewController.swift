@@ -19,7 +19,7 @@ class CountriesViewController: UIViewController {
     
     var defaultOptions = SwipeTableOptions()
     var isSwipeRightEnabled = true
-    var buttonDisplayMode: ButtonDisplayMode = .titleAndImage
+    var buttonDisplayMode: ButtonDisplayMode   = .titleAndImage
     var buttonStyle: ButtonStyle = .circular
     
     //MARK: fetch request init

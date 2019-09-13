@@ -1,11 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G2128" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CountryEntity" representedClassName="CountryEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="flag" optional="YES" attributeType="Binary" syncable="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="19A558d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AlternateSpellingEntity" representedClassName="AlternateSpellingEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="altSpell" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="UserDeviceDetails" representedClassName=".UserDeviceDetails" syncable="YES" codeGenerationType="class">
+    <entity name="BordersEntity" representedClassName="BordersEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="borders" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CallingCodesEntity" representedClassName="CallingCodesEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CountryEntity" representedClassName="CountryEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="alpha2Code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="alpha3Code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="altSpellings" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="area" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="attribute" optional="YES" syncable="YES"/>
+        <attribute name="capital" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cioc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="demonym" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flagImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="gini" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="latlng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nativeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numericCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="population" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subregion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="topLevelDomain" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CountryLatLongEntity" representedClassName="CountryLatLongEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="attribute" optional="YES" syncable="YES"/>
+        <attribute name="attribute1" optional="YES" syncable="YES"/>
+        <attribute name="attribute2" optional="YES" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="long" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CurrenciesEntity" representedClassName="CurrenciesEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="currencyCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currencyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currencySymbol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="LanguagesEntity" representedClassName="LanguagesEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="iso639_1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iso639_2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="languageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nativeName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="RegionalBlocksEntity" representedClassName="RegionalBlocksEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="attribute" optional="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="regionBlocksName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TimezonesEntity" representedClassName="TimezonesEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timezone" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TransalationsEntity" representedClassName="TransalationsEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryTranslation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="UserDeviceDetailsEntity" representedClassName=".UserDeviceDetails" syncable="YES" codeGenerationType="class">
         <attribute name="access_token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="access_tokenDateExpires" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="authenticatedPhoneNumber" optional="YES" attributeType="String" syncable="YES"/>
@@ -44,7 +107,16 @@
         </fetchIndex>
     </entity>
     <elements>
-        <element name="CountryEntity" positionX="-29" positionY="-306" width="128" height="90"/>
-        <element name="UserDeviceDetails" positionX="52" positionY="36" width="128" height="495"/>
+        <element name="CountryEntity" positionX="-29" positionY="-306" width="128" height="330"/>
+        <element name="UserDeviceDetailsEntity" positionX="52" positionY="36" width="128" height="495"/>
+        <element name="CountryLatLongEntity" positionX="9" positionY="-153" width="128" height="135"/>
+        <element name="AlternateSpellingEntity" positionX="18" positionY="-144" width="128" height="75"/>
+        <element name="CallingCodesEntity" positionX="27" positionY="-135" width="128" height="75"/>
+        <element name="TimezonesEntity" positionX="36" positionY="-126" width="128" height="75"/>
+        <element name="BordersEntity" positionX="45" positionY="-117" width="128" height="75"/>
+        <element name="CurrenciesEntity" positionX="54" positionY="-108" width="128" height="105"/>
+        <element name="LanguagesEntity" positionX="63" positionY="-99" width="128" height="120"/>
+        <element name="TransalationsEntity" positionX="18" positionY="-153" width="128" height="90"/>
+        <element name="RegionalBlocksEntity" positionX="27" positionY="-144" width="128" height="90"/>
     </elements>
 </model>
