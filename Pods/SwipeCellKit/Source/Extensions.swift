@@ -9,7 +9,7 @@ import UIKit
 
 extension UITableView {
     var swipeCells: [SwipeTableViewCell] {
-        return visibleCells.map/*compactMap*/({ ($0 as? SwipeTableViewCell)! })
+        return visibleCells.compactMap({ $0 as? SwipeTableViewCell })
     }
     
     func hideSwipeCell() {
@@ -19,7 +19,7 @@ extension UITableView {
 
 extension UICollectionView {
     var swipeCells: [SwipeCollectionViewCell] {
-        return visibleCells as? [SwipeCollectionViewCell] ?? []
+        return visibleCells.compactMap({ $0 as? SwipeCollectionViewCell })
     }
     
     func hideSwipeCell() {

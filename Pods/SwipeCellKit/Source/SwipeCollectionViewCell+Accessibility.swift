@@ -47,11 +47,10 @@ extension SwipeCollectionViewCell {
             let leftActions = delegate?.collectionView(collectionView, editActionsForItemAt: indexPath, for: .left) ?? []
             let rightActions = delegate?.collectionView(collectionView, editActionsForItemAt: indexPath, for: .right) ?? []
             
-            let actions = [rightActions.first, leftActions.first].map({ $0 }) + rightActions.dropFirst() + leftActions.dropFirst()
-//            let actions = [rightActions.first, leftActions.first].compactMap({ $0 }) + rightActions.dropFirst() + leftActions.dropFirst()
-
+            let actions = [rightActions.first, leftActions.first].compactMap({ $0 }) + rightActions.dropFirst() + leftActions.dropFirst()
+            
             if actions.count > 0 {
-                return actions.map({ SwipeAccessibilityCustomAction(action: $0,
+                return actions.compactMap({ SwipeAccessibilityCustomAction(action: $0,
                                                                     indexPath: indexPath,
                                                                     target: self,
                                                                     selector: #selector(performAccessibilityCustomAction(accessibilityCustomAction:))) })

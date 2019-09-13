@@ -1,13 +1,12 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+# platform :ios, '9.0'
 
 target 'CountryOnOff' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for CountryOnOff
-  ###pod 'SwipeCellKit', :git => 'https://github.com/SwipeCellKit/SwipeCellKit.git', :branch => 'swift_4.2'
-  pod 'SwipeCellKit'
+pod 'SwipeCellKit'
 
   target 'CountryOnOffTests' do
     inherit! :search_paths
