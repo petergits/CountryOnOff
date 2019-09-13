@@ -30,7 +30,7 @@
 		56280AC72329C8ED0054F077 /* RAMItemAnimationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280ABF2329C8ED0054F077 /* RAMItemAnimationProtocol.swift */; };
 		56280AC82329C8ED0054F077 /* RAMAnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56280AC02329C8ED0054F077 /* RAMAnimatedTabBarController.swift */; };
 		56280ACA2329CA570054F077 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56280AC92329CA570054F077 /* MapKit.framework */; };
-		563FF45B2329F12000281F11 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 563FF45C2329F12000281F11 /* SwipeCellKit.framework */; };
+		56A3F96A232C220F00C268B7 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A3F969232C220F00C268B7 /* SwipeCellKit.framework */; };
 		8BE532ABD1350A59B343F590 /* Pods_CountryOnOffUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903D4C7E64B0CD89B996A9FB /* Pods_CountryOnOffUITests.framework */; };
 		C3537F081CF824D847E07BB4 /* Pods_CountryOnOffTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7A890566BF9CCFF3405ED5 /* Pods_CountryOnOffTests.framework */; };
 		EFCE807A054FDFB5A78404E0 /* Pods_CountryOnOff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A847FE201E88D79F9C83DB2F /* Pods_CountryOnOff.framework */; };
@@ -87,7 +87,7 @@
 		56280ABF2329C8ED0054F077 /* RAMItemAnimationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMItemAnimationProtocol.swift; sourceTree = "<group>"; };
 		56280AC02329C8ED0054F077 /* RAMAnimatedTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMAnimatedTabBarController.swift; sourceTree = "<group>"; };
 		56280AC92329CA570054F077 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		563FF45C2329F12000281F11 /* SwipeCellKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwipeCellKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56A3F969232C220F00C268B7 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 		5B14A852F368EECB4D8944C1 /* Pods-CountryOnOff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryOnOff.release.xcconfig"; path = "Target Support Files/Pods-CountryOnOff/Pods-CountryOnOff.release.xcconfig"; sourceTree = "<group>"; };
 		8B1D7D8CC3CE3DB6F9BB372B /* Pods-CountryOnOffTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryOnOffTests.release.xcconfig"; path = "Target Support Files/Pods-CountryOnOffTests/Pods-CountryOnOffTests.release.xcconfig"; sourceTree = "<group>"; };
 		903D4C7E64B0CD89B996A9FB /* Pods_CountryOnOffUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryOnOffUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,9 +100,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				563FF45B2329F12000281F11 /* SwipeCellKit.framework in Frameworks */,
 				56280ACA2329CA570054F077 /* MapKit.framework in Frameworks */,
 				56280AA82329ACC20054F077 /* MessageUI.framework in Frameworks */,
+				56A3F96A232C220F00C268B7 /* SwipeCellKit.framework in Frameworks */,
 				EFCE807A054FDFB5A78404E0 /* Pods_CountryOnOff.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,7 +189,7 @@
 		56280AA62329ACC10054F077 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				563FF45C2329F12000281F11 /* SwipeCellKit.framework */,
+				56A3F969232C220F00C268B7 /* SwipeCellKit.framework */,
 				56280AC92329CA570054F077 /* MapKit.framework */,
 				56280AA72329ACC10054F077 /* MessageUI.framework */,
 				A847FE201E88D79F9C83DB2F /* Pods_CountryOnOff.framework */,
@@ -294,13 +294,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = GeekGaps;
 				TargetAttributes = {
 					56280A7123299A2F0054F077 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
@@ -529,6 +532,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -536,6 +540,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -586,6 +591,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -593,6 +599,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -629,6 +636,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F3THCYH8BC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CountryOnOff/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -646,6 +657,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F3THCYH8BC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CountryOnOff/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
