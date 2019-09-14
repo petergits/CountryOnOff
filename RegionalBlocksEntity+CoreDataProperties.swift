@@ -17,7 +17,6 @@ extension RegionalBlocksEntity {
     }
 
     @NSManaged public var name: String
-    @NSManaged public var regionBlocksName: String?
     @NSManaged public var country: CountryEntity
 
 }
