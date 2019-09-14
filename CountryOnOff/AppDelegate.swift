@@ -13,7 +13,11 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var myCoreDataManager: CoreDataManager = CoreDataManager()
+    lazy var applicationDocumentsDirectory: URL = {
+        let urls = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
+        return urls[urls.count-1]
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -75,6 +79,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+    func getManagedContext() -> NSManagedObjectContext {
+        return self.myCoreDataManager.persistentContainer.viewContext
+    }
 
     // MARK: - Core Data stack
 
@@ -120,17 +127,175 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-/*
-    public func createResources()->Void {
-        if self.fetchedResource().count > 0 {
+    
+    func fetchedCountries() ->[CountryEntity] {        
+        let moc = self.getManagedContext()
+        let countriesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "CountryEntity")
+        var myFetchedCountries:[CountryEntity]
+        do {
+            myFetchedCountries = try moc.fetch(countriesFetch) as! [CountryEntity]
+        } catch {
+            fatalError("Failed to fetch any countries: \(error)")
+        }
+        return myFetchedCountries
+    }
+
+    public func createCountries()->Void {
+        if self.fetchedCountries().count > 0 {
             return;
         }
         let managedContext = self.getManagedContext()
-        self.importPlants()
+        self.importCountries()
         self.saveContext()
         return
     }
-*/
+    
+    public func importCountries()->Void {
+        let companyFetch = self.fetchTheCompany()
+        var parentCompany : CompanyEntity? = nil
+        if companyFetch.count > 0 {
+            parentCompany = companyFetch[0]
+        }
+        
+        let jsonPlantsName:String = String("prmgeo")
+        let jsonPlantsPath: String = Bundle.main.path(forResource: jsonPlantsName, ofType: "json")! as String
+        
+        let readData : Data = try! Data(contentsOf: URL(fileURLWithPath: jsonPlantsPath), options:  NSData.ReadingOptions.dataReadingMapped)
+        //let myString = readData.string
+        //let removedSpecialCharactersString = removeSpecialCharsFromString(text:myString)
+        //let newFilteredData = removedSpecialCharactersString.data
+        do {
+            let plantDictionary = try JSONSerialization.jsonObject(with: readData, options: [])
+                as! [String : AnyObject]
+            var plantStartingId:Int64 = 50000
+            print(plantDictionary)
+            //iterate over the dictionary
+            for(theType,theProperties) in plantDictionary {
+                print("type = \(theType)\n")
+                if theType == "features" {
+                    print("properties = \(theProperties)\n")
+                    let largeArray = theProperties as! NSArray
+                    for arrayElement in largeArray {
+                        let plantEntity:PlantEntity = NSEntityDescription.insertNewObject(forEntityName: "PlantEntity", into: self.getManagedContext()) as! PlantEntity
+                        
+                        let addressEntity:AddressEntity = NSEntityDescription.insertNewObject(forEntityName: "AddressEntity", into: self.getManagedContext()) as! AddressEntity
+                        
+                        plantEntity.plantAddress = addressEntity
+                        addressEntity.plant = plantEntity
+                        let resourceCategoryEntity:ResourceCategoryEntity = NSEntityDescription.insertNewObject(forEntityName: "ResourceCategoryEntity", into: self.getManagedContext()) as! ResourceCategoryEntity
+                        resourceCategoryEntity.id = plantStartingId
+                        plantStartingId += 1
+                        resourceCategoryEntity.type = "plant"
+                        resourceCategoryEntity.plants = plantEntity
+                        if parentCompany != nil {
+                            plantEntity.parentCompany = parentCompany
+                        }
+                        
+                        let myHeadDictionary = arrayElement as! Dictionary<String, AnyObject>
+                        /*
+                         let coords = myHeadDictionary["geometry"]
+                         let coordinates = coords?["coordinates"] as! NSArray
+                         let longitude = coordinates[0]
+                         let latitude  = coordinates[1]
+                         */
+                        
+                        let props = myHeadDictionary["properties"]
+                        
+                        let longitude = props?["Longitude"] as? Double
+                        let latitude  = props?["Latitude"] as? Double
+                        if latitude != nil && longitude != nil {
+                            print("latitude = \(latitude!), longitude = \(longitude!)\n")
+                            addressEntity.gpsLatitude  = latitude!
+                            addressEntity.gpsLongitude = longitude!
+                            addressEntity.gpsRadius    = 2000.0
+                        }
+                        if let phoneNumber = props?["Phone"] as? String {
+                            print("phoneNumber: \(phoneNumber)")
+                            plantEntity.phone = phoneNumber
+                        }
+                        let plantName = props?["Plant"] as! String
+                        print("plantName:\(plantName)")
+                        plantEntity.name = plantName
+                        resourceCategoryEntity.name = plantName
+                        
+                        let region = props?["Region"] as! String
+                        print("region:\(region)")
+                        plantEntity.region = region
+                        let multipleBuildings = props?["Multiple Buildings?"] as! String
+                        print("multipleBuildings: \(multipleBuildings)")
+                        if multipleBuildings == "0" {
+                            plantEntity.multipleBuildings = false
+                        }else {
+                            plantEntity.multipleBuildings = true
+                        }
+                        let viewMap = props?["ViewMap"] as! String
+                        print("viewMap: \(viewMap)")
+                        plantEntity.viewMapGeo = viewMap
+                        if let iTManagedBy = props?["IT Managed By"] as? String {
+                            print("iTManagedBy: \(iTManagedBy)")
+                            plantEntity.iTManagedBy = iTManagedBy
+                        }
+                        let isActive = props?["Active?"] as! String
+                        print("isActive: \(isActive)")
+                        if isActive == "0" {
+                            plantEntity.active = false
+                        }else {
+                            plantEntity.active = true
+                        }
+                        
+                        if let city = props?["City"] as? String {
+                            print("city: \(city)")
+                            addressEntity.city = city
+                        }
+                        if let leadIT = props?["Lead IT"] as? String {
+                            print("leadIT: \(leadIT)")
+                            plantEntity.leadIT = leadIT
+                        }
+                        let state = props?["State"] as! String
+                        print("state: \(state)")
+                        addressEntity.stateOrProvince = state
+                        let zipCode = props?["Zipcode"] as! String
+                        print("zipCode: \(zipCode)")
+                        addressEntity.postalCode   = zipCode
+                        if let customerGroup = props?["Customer Group"] as? String {
+                            print("customerGroup: \(customerGroup)")
+                            plantEntity.customerGroup = customerGroup
+                        }
+                        let country = props?["Country"] as! String
+                        print("country: \(country)")
+                        addressEntity.countryCode  = country
+                        let streetAddress = props?["Street Address"] as! String
+                        print("streetAddress: \(streetAddress)")
+                        addressEntity.streetName1 = streetAddress
+                        let productGroupOrg = props?["Product Group Org"] as! String
+                        print("productGroupOrg: \(productGroupOrg)")
+                        plantEntity.productGroupOrg = productGroupOrg
+                        if let additionalAddresses = props?["Additional addresses"] as? String {
+                            print(additionalAddresses)
+                            plantEntity.additionalAddresses = additionalAddresses
+                        }
+                        if let telecomId = props?["Telecom ID"] as? String {
+                            print("telecomId: \(telecomId)")
+                            plantEntity.telecomId = Int64(telecomId)!//Int64(string:telecomId)
+                        }
+                        if let pgItManager = props?["PG IT Manager"] as? String {
+                            print("pgItManager: \(pgItManager)")
+                            plantEntity.pgItManager = pgItManager
+                        }
+                        if let regionItManager = props?["Region IT Manager"] as? String {
+                            print("regionItManager: \(regionItManager)")
+                            plantEntity.regionITManager = regionItManager
+                        }
+                    }
+                }
+            }
+        } catch let error as NSError {
+            print("Failed to load: \(error.localizedDescription)")
+        }
+        print("finished")
+        self.saveContext()
+    }
+
 }
 
 extension Data {
