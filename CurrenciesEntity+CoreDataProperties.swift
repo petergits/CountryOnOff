@@ -16,10 +16,10 @@ extension CurrenciesEntity {
         return NSFetchRequest<CurrenciesEntity>(entityName: "CurrenciesEntity")
     }
 
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var currencyCode: String?
     @NSManaged public var currencyName: String?
     @NSManaged public var currencySymbol: String?
-    @NSManaged public var country: CountryEntity?
+    @NSManaged public var country: CountryEntity
 
 }

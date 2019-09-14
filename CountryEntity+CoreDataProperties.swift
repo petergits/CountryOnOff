@@ -32,7 +32,6 @@ extension CountryEntity {
     @NSManaged public var gini: Float
     @NSManaged public var nativeName: String?
     @NSManaged public var numericCode: String?
-    @NSManaged public var attribute: NSObject?
     @NSManaged public var flagImage: NSData?
     @NSManaged public var cioc: String?
     @NSManaged public var storedOffline: Bool

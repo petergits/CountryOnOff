@@ -16,8 +16,8 @@ extension TimezonesEntity {
         return NSFetchRequest<TimezonesEntity>(entityName: "TimezonesEntity")
     }
 
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var timezone: String?
-    @NSManaged public var country: CountryEntity?
+    @NSManaged public var country: CountryEntity
 
 }

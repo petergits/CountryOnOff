@@ -16,11 +16,11 @@ extension LanguagesEntity {
         return NSFetchRequest<LanguagesEntity>(entityName: "LanguagesEntity")
     }
 
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var iso639_1: String?
     @NSManaged public var iso639_2: String?
     @NSManaged public var languageName: String?
     @NSManaged public var nativeName: String?
-    @NSManaged public var country: CountryEntity?
+    @NSManaged public var country: CountryEntity
 
 }

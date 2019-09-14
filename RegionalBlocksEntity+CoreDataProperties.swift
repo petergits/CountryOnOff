@@ -16,9 +16,8 @@ extension RegionalBlocksEntity {
         return NSFetchRequest<RegionalBlocksEntity>(entityName: "RegionalBlocksEntity")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var attribute: NSObject?
+    @NSManaged public var name: String
     @NSManaged public var regionBlocksName: String?
-    @NSManaged public var country: CountryEntity?
+    @NSManaged public var country: CountryEntity
 
 }

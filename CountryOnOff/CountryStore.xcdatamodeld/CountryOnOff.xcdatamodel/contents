@@ -20,7 +20,6 @@
         <attribute name="alpha3Code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="altSpellings" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="area" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="attribute" optional="YES" syncable="YES"/>
         <attribute name="capital" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cioc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="demonym" optional="YES" attributeType="String" syncable="YES"/>
@@ -47,9 +46,6 @@
         <relationship name="translations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransalationsEntity" inverseName="country" inverseEntity="TransalationsEntity" syncable="YES"/>
     </entity>
     <entity name="CountryLatLongEntity" representedClassName="CountryLatLongEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="attribute" optional="YES" syncable="YES"/>
-        <attribute name="attribute1" optional="YES" syncable="YES"/>
-        <attribute name="attribute2" optional="YES" syncable="YES"/>
         <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="long" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -71,7 +67,6 @@
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="languages" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
     <entity name="RegionalBlocksEntity" representedClassName="RegionalBlocksEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="attribute" optional="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="regionBlocksName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="regionalBlocks" inverseEntity="CountryEntity" syncable="YES"/>
@@ -126,9 +121,9 @@
         </fetchIndex>
     </entity>
     <elements>
-        <element name="CountryEntity" positionX="-393.21484375" positionY="-5461.58984375" width="128" height="478"/>
+        <element name="CountryEntity" positionX="-393.21484375" positionY="-5461.58984375" width="128" height="463"/>
         <element name="UserDeviceDetailsEntity" positionX="52" positionY="36" width="128" height="495"/>
-        <element name="CountryLatLongEntity" positionX="9" positionY="-153" width="128" height="148"/>
+        <element name="CountryLatLongEntity" positionX="9" positionY="-153" width="128" height="103"/>
         <element name="AlternateSpellingEntity" positionX="18" positionY="-144" width="128" height="88"/>
         <element name="CallingCodesEntity" positionX="27" positionY="-135" width="128" height="88"/>
         <element name="TimezonesEntity" positionX="36" positionY="-126" width="128" height="88"/>
@@ -136,6 +131,6 @@
         <element name="CurrenciesEntity" positionX="54" positionY="-108" width="128" height="118"/>
         <element name="LanguagesEntity" positionX="63" positionY="-99" width="128" height="133"/>
         <element name="TransalationsEntity" positionX="18" positionY="-153" width="128" height="103"/>
-        <element name="RegionalBlocksEntity" positionX="-81.3515625" positionY="-474.73046875" width="128" height="103"/>
+        <element name="RegionalBlocksEntity" positionX="-81.3515625" positionY="-474.73046875" width="128" height="88"/>
     </elements>
 </model>
