@@ -2,6 +2,72 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:AlternateSpellingEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:AlternateSpellingEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CountryLatLongEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CountryLatLongEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:LanguagesEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:LanguagesEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CurrenciesEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CurrenciesEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CallingCodesEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CallingCodesEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:RegionalBlocksEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:RegionalBlocksEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TransalationsEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TransalationsEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:BordersEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:BordersEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:UserDeviceDetails+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:UserDeviceDetails+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TimezonesEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TimezonesEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CountryEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CountryEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:CountryOnOff.xcodeproj">
    </FileRef>
    <FileRef
