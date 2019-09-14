@@ -16,8 +16,8 @@ extension TransalationsEntity {
         return NSFetchRequest<TransalationsEntity>(entityName: "TransalationsEntity")
     }
 
-    @NSManaged public var code: String
-    @NSManaged public var translation: String
+    @NSManaged public var code: String?
+    @NSManaged public var translation: String?
     @NSManaged public var country: CountryEntity
 
 }

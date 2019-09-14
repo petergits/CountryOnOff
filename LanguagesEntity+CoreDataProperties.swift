@@ -18,7 +18,7 @@ extension LanguagesEntity {
 
     @NSManaged public var iso639_1: String?
     @NSManaged public var iso639_2: String?
-    @NSManaged public var name: String?
+    @NSManaged public var languageName: String?
     @NSManaged public var country: CountryEntity
 
 }

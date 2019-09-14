@@ -16,7 +16,7 @@ extension AlternateSpellingEntity {
         return NSFetchRequest<AlternateSpellingEntity>(entityName: "AlternateSpellingEntity")
     }
 
-    @NSManaged public var altSpell: String
-    @NSManaged public var country: CountryEntity
+    @NSManaged public var altSpell: String?
+    @NSManaged public var country: CountryEntity?
 
 }

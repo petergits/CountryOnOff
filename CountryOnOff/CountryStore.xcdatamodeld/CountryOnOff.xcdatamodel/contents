@@ -5,7 +5,7 @@
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="altSpelling" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
     <entity name="BordersEntity" representedClassName=".BordersEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="borders" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="borderName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="borders" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
     <entity name="CallingCodesEntity" representedClassName=".CallingCodesEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
@@ -49,18 +49,18 @@
     </entity>
     <entity name="CurrenciesEntity" representedClassName=".CurrenciesEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currencyName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="currencies" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
     <entity name="LanguagesEntity" representedClassName=".LanguagesEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="iso639_1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="iso639_2" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="languageName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="languages" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
     <entity name="RegionalBlocksEntity" representedClassName=".RegionalBlocksEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="regionalBlockName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="regionalBlocks" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
     <entity name="TimezonesEntity" representedClassName=".TimezonesEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">

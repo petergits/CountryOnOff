@@ -16,7 +16,7 @@ extension BordersEntity {
         return NSFetchRequest<BordersEntity>(entityName: "BordersEntity")
     }
 
-    @NSManaged public var borders: String
+    @NSManaged public var borderName: String
     @NSManaged public var country: CountryEntity
 
 }
