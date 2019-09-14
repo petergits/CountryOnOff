@@ -16,7 +16,7 @@ extension CallingCodesEntity {
         return NSFetchRequest<CallingCodesEntity>(entityName: "CallingCodesEntity")
     }
 
-    @NSManaged public var code: String
+    @NSManaged public var code: String?
     @NSManaged public var country: CountryEntity
 
 }

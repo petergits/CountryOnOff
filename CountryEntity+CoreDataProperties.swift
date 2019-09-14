@@ -16,7 +16,7 @@ extension CountryEntity {
         return NSFetchRequest<CountryEntity>(entityName: "CountryEntity")
     }
 
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var topLevelDomain: String?
     @NSManaged public var flag: String?
     @NSManaged public var alpha2Code: String?

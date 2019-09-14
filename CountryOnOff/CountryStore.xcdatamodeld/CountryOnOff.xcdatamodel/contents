@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="19A558d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="AlternateSpellingEntity" representedClassName="AlternateSpellingEntity" syncable="YES" codeGenerationType="class">
+    <entity name="AlternateSpellingEntity" representedClassName=".AlternateSpellingEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="altSpell" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="altSpelling" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
-    <entity name="BordersEntity" representedClassName="BordersEntity" syncable="YES" codeGenerationType="class">
+    <entity name="BordersEntity" representedClassName=".BordersEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="borders" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="borders" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
-    <entity name="CallingCodesEntity" representedClassName="CallingCodesEntity" syncable="YES" codeGenerationType="class">
+    <entity name="CallingCodesEntity" representedClassName=".CallingCodesEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="callingCodes" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
-    <entity name="CountryEntity" representedClassName="CountryEntity" syncable="YES" codeGenerationType="class">
+    <entity name="CountryEntity" representedClassName=".CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="alpha2Code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="alpha3Code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="altSpellings" optional="YES" attributeType="String" syncable="YES"/>
@@ -42,32 +42,32 @@
         <relationship name="timeZones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimezonesEntity" inverseName="country" inverseEntity="TimezonesEntity" syncable="YES"/>
         <relationship name="translations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransalationsEntity" inverseName="country" inverseEntity="TransalationsEntity" syncable="YES"/>
     </entity>
-    <entity name="CountryLatLongEntity" representedClassName="CountryLatLongEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="long" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+    <entity name="CountryLatLongEntity" representedClassName=".CountryLatLongEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="lattitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="gps" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
-    <entity name="CurrenciesEntity" representedClassName="CurrenciesEntity" syncable="YES" codeGenerationType="class">
+    <entity name="CurrenciesEntity" representedClassName=".CurrenciesEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="currencies" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
-    <entity name="LanguagesEntity" representedClassName="LanguagesEntity" syncable="YES" codeGenerationType="class">
+    <entity name="LanguagesEntity" representedClassName=".LanguagesEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="iso639_1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="iso639_2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="languages" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
-    <entity name="RegionalBlocksEntity" representedClassName="RegionalBlocksEntity" syncable="YES" codeGenerationType="class">
+    <entity name="RegionalBlocksEntity" representedClassName=".RegionalBlocksEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="regionalBlocks" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
-    <entity name="TimezonesEntity" representedClassName="TimezonesEntity" syncable="YES" codeGenerationType="class">
+    <entity name="TimezonesEntity" representedClassName=".TimezonesEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="timezone" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="timeZones" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
-    <entity name="TransalationsEntity" representedClassName="TransalationsEntity" syncable="YES" codeGenerationType="class">
+    <entity name="TransalationsEntity" representedClassName=".TransalationsEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="translations" inverseEntity="CountryEntity" syncable="YES"/>
@@ -111,16 +111,16 @@
         </fetchIndex>
     </entity>
     <elements>
-        <element name="CountryEntity" positionX="-393.21484375" positionY="-5461.58984375" width="128" height="463"/>
+        <element name="CountryEntity" positionX="-737.82421875" positionY="-17247.953125" width="128" height="463"/>
         <element name="UserDeviceDetailsEntity" positionX="52" positionY="36" width="128" height="495"/>
-        <element name="CountryLatLongEntity" positionX="9" positionY="-153" width="128" height="88"/>
-        <element name="AlternateSpellingEntity" positionX="18" positionY="-144" width="128" height="73"/>
-        <element name="CallingCodesEntity" positionX="27" positionY="-135" width="128" height="73"/>
-        <element name="TimezonesEntity" positionX="36" positionY="-126" width="128" height="73"/>
-        <element name="BordersEntity" positionX="45" positionY="-117" width="128" height="73"/>
-        <element name="CurrenciesEntity" positionX="54" positionY="-108" width="128" height="103"/>
-        <element name="LanguagesEntity" positionX="63" positionY="-99" width="128" height="103"/>
-        <element name="TransalationsEntity" positionX="18" positionY="-153" width="128" height="88"/>
-        <element name="RegionalBlocksEntity" positionX="-81.3515625" positionY="-474.73046875" width="128" height="73"/>
+        <element name="CountryLatLongEntity" positionX="-515.69921875" positionY="-17137.1484375" width="128" height="88"/>
+        <element name="AlternateSpellingEntity" positionX="-284.4375" positionY="-16805.44140625" width="128" height="73"/>
+        <element name="CallingCodesEntity" positionX="-361.06640625" positionY="-17086.8828125" width="128" height="73"/>
+        <element name="TimezonesEntity" positionX="-889.31640625" positionY="-16786.515625" width="128" height="73"/>
+        <element name="BordersEntity" positionX="-895.9453125" positionY="-17176.78125" width="128" height="73"/>
+        <element name="CurrenciesEntity" positionX="-934.31640625" positionY="-17076.125" width="128" height="103"/>
+        <element name="LanguagesEntity" positionX="-909.02734375" positionY="-16946.83203125" width="128" height="103"/>
+        <element name="TransalationsEntity" positionX="-568.93359375" positionY="-16769.4609375" width="128" height="88"/>
+        <element name="RegionalBlocksEntity" positionX="-421.375" positionY="-16830.4140625" width="128" height="73"/>
     </elements>
 </model>

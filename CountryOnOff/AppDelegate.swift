@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
+/*
     public func createResources()->Void {
         if self.fetchedResource().count > 0 {
             return;
@@ -130,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
         return
     }
-    
+*/
 }
 
 extension Data {

@@ -265,11 +265,11 @@ extension CountriesViewController: UITableViewDelegate {
         searchBar.resignFirstResponder()
         let currentCountry = fetchedResultsController.object(at: indexPath)
         
-        if (currentCountry.storedFlag == true) {
-            let lat = currentCountry.name?.lat
-            let long = currentPlace.name?.long
-            let flagUrl = currentCountry.name.flag
-            let flagImg = currentCountry.name.flagImage
+        if (currentCountry.storedOffline == true) {
+            let lat = currentCountry.gps?.lat
+            let long = currentCountry.gps?.long
+            let flagUrl = currentCountry.flag
+            let flagImg = currentCountry.flagImage
             //openMapForPlace(lat: lat!, long: long!, placeName: placeStr)
         } else {
             let alert = UIAlertController(title: "Alert", message: "No GPS information current", preferredStyle: UIAlertControllerStyle.alert)
