@@ -128,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func fetchedCountries() ->[CountryEntity] {        
+    func fetchedCountries() ->[CountryEntity] {
         let moc = self.getManagedContext()
         let countriesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "CountryEntity")
         var myFetchedCountries:[CountryEntity]
@@ -151,28 +151,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     public func importCountries()->Void {
-        let companyFetch = self.fetchTheCompany()
-        var parentCompany : CompanyEntity? = nil
-        if companyFetch.count > 0 {
-            parentCompany = companyFetch[0]
+        let countryFetch = self.fetchCountries()
+        var countries : CountryEntity? = nil
+        if countries.count > 0 {
+            countries = countryFetch[0]
         }
         
-        let jsonPlantsName:String = String("prmgeo")
-        let jsonPlantsPath: String = Bundle.main.path(forResource: jsonPlantsName, ofType: "json")! as String
+        let jsonCountriesName:String = String("countries")
+        let jsonCountriesPath: String = Bundle.main.path(forResource: jsonCountriesName, ofType: "json")! as String
         
-        let readData : Data = try! Data(contentsOf: URL(fileURLWithPath: jsonPlantsPath), options:  NSData.ReadingOptions.dataReadingMapped)
-        //let myString = readData.string
-        //let removedSpecialCharactersString = removeSpecialCharsFromString(text:myString)
-        //let newFilteredData = removedSpecialCharactersString.data
+        let readData : Data = try! Data(contentsOf: URL(fileURLWithPath: jsonCountriesPath), options:  NSData.ReadingOptions.dataReadingMapped)
         do {
-            let plantDictionary = try JSONSerialization.jsonObject(with: readData, options: [])
+            let countriesDictionary = try JSONSerialization.jsonObject(with: readData, options: [])
                 as! [String : AnyObject]
-            var plantStartingId:Int64 = 50000
-            print(plantDictionary)
+            var countryStartingId:Int64 = 50000
+            print(countriesDictionary)
             //iterate over the dictionary
-            for(theType,theProperties) in plantDictionary {
+            for(theType,theDetails) in countriesDictionary {
                 print("type = \(theType)\n")
-                if theType == "features" {
+                if theType == "name" {
                     print("properties = \(theProperties)\n")
                     let largeArray = theProperties as! NSArray
                     for arrayElement in largeArray {
