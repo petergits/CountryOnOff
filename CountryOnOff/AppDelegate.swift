@@ -151,9 +151,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     public func importCountries()->Void {
-        let countryFetch = self.fetchCountries()
+        let countryFetch = self.fetchedCountries()
         var countries : CountryEntity? = nil
-        if countries.count > 0 {
+        if countries > 0 {
             countries = countryFetch[0]
         }
         
@@ -166,17 +166,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 as! [String : AnyObject]
             var countryStartingId:Int64 = 50000
             print(countriesDictionary)
+
+            let countryEntity:CountryEntity = NSEntityDescription.insertNewObject(forEntityName: "CountryEntity", into: self.getManagedContext()) as! CountryEntity
+
             //iterate over the dictionary
             for(theType,theDetails) in countriesDictionary {
                 print("type = \(theType)\n")
                 if theType == "name" {
-                    print("properties = \(theProperties)\n")
-                    let largeArray = theProperties as! NSArray
-                    for arrayElement in largeArray {
-                        let plantEntity:PlantEntity = NSEntityDescription.insertNewObject(forEntityName: "PlantEntity", into: self.getManagedContext()) as! PlantEntity
+                    print("theDetails = \(theDetails)\n")
+                    countryEntity.name         = theDetails["name"] as? String
+                    countryEntity.alpha2Code   = theDetails["alpha2code"] as? String
+                    countryEntity.alpha3Code   = theDetails["alpha3code"] as? String
+                    countryEntity.capital      = theDetails["capital"] as? String
+                    countryEntity.region       = theDetails["region"] as? String
+                    countryEntity.subregion    = theDetails["subregion"] as? String
+                    countryEntity.population   = theDetails["population"] as? Double ?? 0
+                    
+                    
+                }else if theType == "callingCodes" {
+                    let codesArray = theDetails["callingCodes"] as! NSArray
+                    for arrayElement in codesArray {
+                        let callingCodesEntity:CallingCodesEntity = NSEntityDescription.insertNewObject(forEntityName: "CallingCodesEntity", into: self.getManagedContext()) as! CallingCodesEntity
+                        callingCodesEntity.code    = arrayElement as? String
+                        countryEntity.addToCallingCodes( callingCodesEntity )
+                        callingCodesEntity.country = countryEntity
+                    }
+                }else if theType == "altSpellings" {
+                        let codesArray = theDetails["altSpellings"] as! NSArray
+                        for arrayElement in codesArray {
+                            let alternateSpellingEntity:AlternateSpellingEntity = NSEntityDescription.insertNewObject(forEntityName: "AlternateSpellingEntity", into: self.getManagedContext()) as! AlternateSpellingEntity
+                            alternateSpellingEntity.altSpell = arrayElement as? String
+                            countryEntity.addToAltSpelling(alternameSpellingEntity)
+                            alternateSpellingEntity.country  = countryEntity
+                        }
+                }else if theType == "latlng" {
+                    let codesArray = theDetails["latlng"] as! NSArray
+                    
+                        let countryLatLongEntity:CountryLatLongEntity = NSEntityDescription.insertNewObject(forEntityName: "CountryLatLongEntity", into: self.getManagedContext()) as! CountryLatLongEntity
+                        int i = 0
+                         {
+                            if i == 0 {
+                        countryLatLongEntity.lattitude = codesArray[0] as? String
+                        countryEntity.addToAltSpelling(alternameSpellingEntity)
+                        countryLatLongEntity.country  = countryEntity
+                    }
                         
-                        let addressEntity:AddressEntity = NSEntityDescription.insertNewObject(forEntityName: "AddressEntity", into: self.getManagedContext()) as! AddressEntity
+                        let countryLatLongEntity:CountryLatLongEntity = NSEntityDescription.insertNewObject(forEntityName: "CountryLatLongEntity", into: self.getManagedContext()) as! CountryLatLongEntity
                         
+                        let currenciesEntity:CurrenciesEntity = NSEntityDescription.insertNewObject(forEntityName: "CurrenciesEntity", into: self.getManagedContext()) as! CurrenciesEntity
+
+                        let languagesEntity:LanguagesEntity = NSEntityDescription.insertNewObject(forEntityName: "LanguagesEntity", into: self.getManagedContext()) as! LanguagesEntity
+                        
+                        let regionalBlocksEntity:RegionalBlocksEntity = NSEntityDescription.insertNewObject(forEntityName: "RegionalBlocksEntity", into: self.getManagedContext()) as! RegionalBlocksEntity
+
+                        let timezonesEntity:TimezonesEntity = NSEntityDescription.insertNewObject(forEntityName: "TimezonesEntity", into: self.getManagedContext()) as! TimezonesEntity
+
+                        let translationsEntity:TranslationsEntity = NSEntityDescription.insertNewObject(forEntityName: "TranslationsEntity", into: self.getManagedContext()) as! TranslationsEntity
+
                         plantEntity.plantAddress = addressEntity
                         addressEntity.plant = plantEntity
                         let resourceCategoryEntity:ResourceCategoryEntity = NSEntityDescription.insertNewObject(forEntityName: "ResourceCategoryEntity", into: self.getManagedContext()) as! ResourceCategoryEntity
@@ -189,12 +235,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         }
                         
                         let myHeadDictionary = arrayElement as! Dictionary<String, AnyObject>
-                        /*
-                         let coords = myHeadDictionary["geometry"]
-                         let coordinates = coords?["coordinates"] as! NSArray
-                         let longitude = coordinates[0]
-                         let latitude  = coordinates[1]
-                         */
                         
                         let props = myHeadDictionary["properties"]
                         
