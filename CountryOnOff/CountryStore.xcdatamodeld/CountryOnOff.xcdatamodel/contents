@@ -49,7 +49,7 @@
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="currencies" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
     <entity name="GpsEntity" representedClassName=".GpsEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="lattitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="gps" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>

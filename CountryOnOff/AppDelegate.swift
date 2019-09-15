@@ -69,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
+/*
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         if userActivity.activityType == CSSearchableItemActionType {
             if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
@@ -79,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+ */
     func getManagedContext() -> NSManagedObjectContext {
         return self.myCoreDataManager.persistentContainer.viewContext
     }
@@ -153,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public func importCountries()->Void {
         let countryFetch = self.fetchedCountries()
         var countries : CountryEntity? = nil
-        if countryFetch > 0 {
+        if countryFetch != nil {
             countries = countryFetch[0]
         }
         
@@ -164,7 +166,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let countriesDictionary = try JSONSerialization.jsonObject(with: readData, options: [])
                 as! [String : AnyObject]
-            var countryStartingId:Int64 = 50000
             print(countriesDictionary)
 
             let countryEntity:CountryEntity = NSEntityDescription.insertNewObject(forEntityName: "CountryEntity", into: self.getManagedContext()) as! CountryEntity
@@ -188,17 +189,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }else if theType == "population" {
                     countryEntity.population   = theDetails["population"] as? Double ?? 0
                 }else if theType == "gini" {
-                    countryEntity.gini   = theDetails["gini"] as? Double ?? 0
+                    countryEntity.gini   = theDetails["gini"] as? Float ?? 0.0
                 }else if theType == "demonym" {
                     countryEntity.demonym = theDetails["demonym"] as? String
                 }else if theType == "area" {
-                    countryEntity.area = theDetails["area"] as? Float
+                    countryEntity.area = theDetails["area"] as? Float ?? 0.0
                 }else if theType == "nativeName" {
                     countryEntity.nativeName = theDetails["nativeName"] as? String
                 }else if theType == "flag" {
                     countryEntity.flag = theDetails["flag"] as? String
                 }else if theType == "numericCode" {
-                    countryEntity.numericCode = theDetails["numericCode"] as? Float
+                    countryEntity.numericCode = theDetails["numericCode"] as? String
                 }else if theType == "callingCodes" {
                     let codesArray = theDetails["callingCodes"] as! NSArray
                     for arrayElement in codesArray {
@@ -219,7 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let codesArray = theDetails["latlng"] as! NSArray
                     
                     let countryLatLongEntity:GpsEntity = NSEntityDescription.insertNewObject(forEntityName: "GpsEntity", into: self.getManagedContext()) as! GpsEntity
-                    countryLatLongEntity.lattitude = codesArray[0] as? Float ?? 0.0
+                    countryLatLongEntity.latitude = codesArray[0] as? Float ?? 0.0
                     countryLatLongEntity.longitude = codesArray[1] as? Float ?? 0.0
                         countryEntity.gps = countryLatLongEntity
                         countryLatLongEntity.country  = countryEntity
@@ -267,10 +268,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     for arrayElement in codesArray {
                         let translationsEntity:TransalationsEntity = NSEntityDescription.insertNewObject(forEntityName: "TranslationsEntity", into: self.getManagedContext()) as! TransalationsEntity
                         let myDictionary = arrayElement as! Dictionary<String, AnyObject>
-                        let codeKeys = myDictionary.Keys
-                        for theCode in codeKeys {
-                            translationsEntity.code = theCode as? String
-                            translationsEntity.translation = myDictionary[translation.code] as? String
+                        let aCodeKey:String = Array(myDictionary.keys)[0]
+                            translationsEntity.code = aCodeKey
+                            translationsEntity.translation = myDictionary[aCodeKey] as? String
                         //translationsEntity.de = myDictionary["de"] as? String
                         //translationsEntity.es = myDictionary["es"] as? String
                         //translationsEntity.fr = myDictionary["fr"] as? String

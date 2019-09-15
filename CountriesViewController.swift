@@ -32,11 +32,11 @@ class CountriesViewController: UIViewController {
         let fetchRequest: NSFetchRequest<CountryEntity> = CountryEntity.fetchRequest()
         
         // Configure Fetch Request
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(ResourceCategoryEntity.name), ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(CountryEntity.name), ascending: true)]
         fetchRequest.predicate = NSPredicate(format: "storedFlag == true")
         
         // Create Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: #keyPath(ResourceCategoryEntity.name), cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: #keyPath(CountryEntity.name), cacheName: nil)
         
         // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
@@ -266,8 +266,8 @@ extension CountriesViewController: UITableViewDelegate {
         let currentCountry = fetchedResultsController.object(at: indexPath)
         
         if (currentCountry.storedOffline == true) {
-            let lat = currentCountry.gps?.lat
-            let long = currentCountry.gps?.long
+            let lat = currentCountry.gps?.latitude
+            let long = currentCountry.gps?.longitude
             let flagUrl = currentCountry.flag
             let flagImg = currentCountry.flagImage
             //openMapForPlace(lat: lat!, long: long!, placeName: placeStr)
@@ -295,26 +295,26 @@ extension CountriesViewController: UITableViewDelegate {
 
 extension CountriesViewController: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        let currentPlace = fetchedResultsController.object(at: indexPath)
+        let currentCountry = fetchedResultsController.object(at: indexPath)
         
         if orientation == .left {
             return[]
         } else {
-            let floorPlan = SwipeAction(style: .destructive, title: nil) { action, indexPath in
-                print("floorPlan")
+            let countryDetails = SwipeAction(style: .destructive, title: nil) { action, indexPath in
+                print("countryDetails")
             }
-            floorPlan.hidesWhenSelected = true
-            configure(action: floorPlan, with: .floorplane)
+            countryDetails.hidesWhenSelected = true
+            configure(action: countryDetails, with: .floorplane)
             
             let directions = SwipeAction(style: .destructive, title: nil) { action, indexPath in
                 print("directions")
                 
                 //go to direction
-                if (currentPlace.type == "plant") {
-                    let lat = currentPlace.plants?.plantAddress?.gpsLatitude
-                    let long = currentPlace.plants?.plantAddress?.gpsLongitude
-                    let placeStr = (currentPlace.plants?.plantAddress?.city!)! + " " + (currentPlace.plants?.plantAddress?.streetName1)!
-                    self.openMapForPlace(lat: lat!, long: long!, placeName: placeStr)
+                if (currentCountry.storedOffline == true) {
+                    let lat = currentCountry.gps?.latitude
+                    let long = currentCountry.gps?.longitude
+                    //let placeStr = (currentPlace.plants?.plantAddress?.city!)! + " " + (currentPlace.plants?.plantAddress?.streetName1)!
+                    self.openMapForPlace(lat: CLLocationDegrees(lat!), long: CLLocationDegrees(long!), placeName: currentCountry.name ?? "United States")
                 } else {
                     let alert = UIAlertController(title: "Alert", message: "No GPS information current", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.default, handler: nil))
@@ -324,7 +324,7 @@ extension CountriesViewController: SwipeTableViewCellDelegate {
             }
             directions.hidesWhenSelected = true
             configure(action: directions, with: .directions)
-            return [directions, floorPlan]
+            return [directions, countryDetails]
         }
     }
     
