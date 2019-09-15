@@ -163,8 +163,6 @@ extension CountriesViewController: UISearchBarDelegate {
         
         tableView.reloadData()
     }
-    
-    
 }
 
 
@@ -192,7 +190,7 @@ extension CountriesViewController: NSFetchedResultsControllerDelegate {
             }
             break;
         case .update:
-            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? PlaceTableViewCell {
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? CountryTableViewCell {
                 configure(cell, at: indexPath)
             }
             break;
@@ -249,9 +247,6 @@ extension CountriesViewController: UITableViewDataSource {
         
         // Configure Cell
         cell.countryLbl.text = theCountry.name!
-        
-        
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -270,7 +265,7 @@ extension CountriesViewController: UITableViewDelegate {
             let long = currentCountry.gps?.longitude
             let flagUrl = currentCountry.flag
             let flagImg = currentCountry.flagImage
-            //openMapForPlace(lat: lat!, long: long!, placeName: placeStr)
+            openMapForPlace(lat: CLLocationDegrees(lat!), long: CLLocationDegrees(long!), placeName: currentCountry.name!)
         } else {
             let alert = UIAlertController(title: "Alert", message: "No GPS information current", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.default, handler: nil))
@@ -347,7 +342,6 @@ extension CountriesViewController: SwipeTableViewCellDelegate {
     func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
         action.title = descriptor.title(forDisplayMode: buttonDisplayMode)
         action.image = descriptor.image(forStyle: buttonStyle, displayMode: buttonDisplayMode)
-        
         switch buttonStyle {
         case .backgroundColor:
             action.backgroundColor = descriptor.color
@@ -358,6 +352,49 @@ extension CountriesViewController: SwipeTableViewCellDelegate {
             action.transitionDelegate = ScaleTransition.default
         }
     }
+}
+
+enum ActionDescriptor {
+    case gps, floorplane, directions
+    
+    func title(forDisplayMode displayMode: ButtonDisplayMode) -> String? {
+        guard displayMode != .imageOnly else { return nil }
+        
+        switch self {
+        case .gps: return "Request GPS"
+        case .floorplane: return "Floor plan"
+        case .directions: return "Directions"
+        }
+    }
+    
+    func image(forStyle style: ButtonStyle, displayMode: ButtonDisplayMode) -> UIImage? {
+        guard displayMode != .titleOnly else { return nil }
+        
+        let name: String
+        switch self {
+        case .gps: name = "ShareGPS"
+        case .floorplane: name = "Floorplan"
+        case .directions: name = "Directions"
+        }
+        
+        return UIImage(named: style == .backgroundColor ? name : name + "-circle")
+    }
+    
+    var color: UIColor {
+        switch self {
+        case .gps: return UIColor.white
+        case .floorplane: return UIColor.white
+        case .directions: return UIColor.white
+        }
+    }
+}
+
+enum ButtonDisplayMode {
+    case titleAndImage, titleOnly, imageOnly
+}
+
+enum ButtonStyle {
+    case backgroundColor, circular
 }
 
 
