@@ -16,7 +16,7 @@
         <attribute name="alpha2Code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="alpha3Code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="altSpellings" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="area" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="area" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="capital" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cioc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="demonym" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,26 +32,26 @@
         <attribute name="storedOffline" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="subregion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="topLevelDomain" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="altSpelling" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AlternateSpellingEntity" inverseName="country" inverseEntity="AlternateSpellingEntity" syncable="YES"/>
+        <relationship name="altSpelling" toMany="YES" deletionRule="Nullify" destinationEntity="AlternateSpellingEntity" inverseName="country" inverseEntity="AlternateSpellingEntity" syncable="YES"/>
         <relationship name="borders" toMany="YES" deletionRule="Nullify" destinationEntity="BordersEntity" inverseName="country" inverseEntity="BordersEntity" syncable="YES"/>
-        <relationship name="callingCodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CallingCodesEntity" inverseName="country" inverseEntity="CallingCodesEntity" syncable="YES"/>
-        <relationship name="currencies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CurrenciesEntity" inverseName="country" inverseEntity="CurrenciesEntity" syncable="YES"/>
-        <relationship name="gps" maxCount="1" deletionRule="Nullify" destinationEntity="CountryLatLongEntity" inverseName="country" inverseEntity="CountryLatLongEntity" syncable="YES"/>
-        <relationship name="languages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LanguagesEntity" inverseName="country" inverseEntity="LanguagesEntity" syncable="YES"/>
-        <relationship name="regionalBlocks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RegionalBlocksEntity" inverseName="country" inverseEntity="RegionalBlocksEntity" syncable="YES"/>
-        <relationship name="timeZones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimezonesEntity" inverseName="country" inverseEntity="TimezonesEntity" syncable="YES"/>
-        <relationship name="translations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransalationsEntity" inverseName="country" inverseEntity="TransalationsEntity" syncable="YES"/>
-    </entity>
-    <entity name="CountryLatLongEntity" representedClassName=".CountryLatLongEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="lattitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="gps" inverseEntity="CountryEntity" syncable="YES"/>
+        <relationship name="callingCodes" toMany="YES" deletionRule="Nullify" destinationEntity="CallingCodesEntity" inverseName="country" inverseEntity="CallingCodesEntity" syncable="YES"/>
+        <relationship name="currencies" toMany="YES" deletionRule="Nullify" destinationEntity="CurrenciesEntity" inverseName="country" inverseEntity="CurrenciesEntity" syncable="YES"/>
+        <relationship name="gps" maxCount="1" deletionRule="Nullify" destinationEntity="GpsEntity" inverseName="country" inverseEntity="GpsEntity" syncable="YES"/>
+        <relationship name="languages" toMany="YES" deletionRule="Nullify" destinationEntity="LanguagesEntity" inverseName="country" inverseEntity="LanguagesEntity" syncable="YES"/>
+        <relationship name="regionalBlocks" toMany="YES" deletionRule="Nullify" destinationEntity="RegionalBlocksEntity" inverseName="country" inverseEntity="RegionalBlocksEntity" syncable="YES"/>
+        <relationship name="timeZones" toMany="YES" deletionRule="Nullify" destinationEntity="TimezonesEntity" inverseName="country" inverseEntity="TimezonesEntity" syncable="YES"/>
+        <relationship name="translations" toMany="YES" deletionRule="Nullify" destinationEntity="TransalationsEntity" inverseName="country" inverseEntity="TransalationsEntity" syncable="YES"/>
     </entity>
     <entity name="CurrenciesEntity" representedClassName=".CurrenciesEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="currencyName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="currencies" inverseEntity="CountryEntity" syncable="YES"/>
+        <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="currencies" inverseEntity="CountryEntity" syncable="YES"/>
+    </entity>
+    <entity name="GpsEntity" representedClassName=".GpsEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="lattitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="gps" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
     <entity name="LanguagesEntity" representedClassName=".LanguagesEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="iso639_1" optional="YES" attributeType="String" syncable="YES"/>
@@ -113,7 +113,7 @@
     <elements>
         <element name="CountryEntity" positionX="-737.82421875" positionY="-17247.953125" width="128" height="463"/>
         <element name="UserDeviceDetailsEntity" positionX="52" positionY="36" width="128" height="495"/>
-        <element name="CountryLatLongEntity" positionX="-515.69921875" positionY="-17137.1484375" width="128" height="88"/>
+        <element name="GpsEntity" positionX="-515.69921875" positionY="-17137.1484375" width="128" height="88"/>
         <element name="AlternateSpellingEntity" positionX="-284.4375" positionY="-16805.44140625" width="128" height="73"/>
         <element name="CallingCodesEntity" positionX="-361.06640625" positionY="-17086.8828125" width="128" height="73"/>
         <element name="TimezonesEntity" positionX="-889.31640625" positionY="-16786.515625" width="128" height="73"/>

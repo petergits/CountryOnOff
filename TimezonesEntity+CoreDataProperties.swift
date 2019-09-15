@@ -2,7 +2,7 @@
 //  TimezonesEntity+CoreDataProperties.swift
 //  
 //
-//  Created by Peter Adient Gits on 9/14/19.
+//  Created by Peter Gits on 9/14/19.
 //
 //
 

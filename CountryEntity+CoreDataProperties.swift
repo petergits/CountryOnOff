@@ -2,7 +2,7 @@
 //  CountryEntity+CoreDataProperties.swift
 //  
 //
-//  Created by Peter Adient Gits on 9/14/19.
+//  Created by Peter Gits on 9/15/19.
 //
 //
 
@@ -16,7 +16,7 @@ extension CountryEntity {
         return NSFetchRequest<CountryEntity>(entityName: "CountryEntity")
     }
 
-    @NSManaged public var name: String
+    @NSManaged public var name: String?
     @NSManaged public var topLevelDomain: String?
     @NSManaged public var flag: String?
     @NSManaged public var alpha2Code: String?
@@ -28,7 +28,7 @@ extension CountryEntity {
     @NSManaged public var population: Double
     @NSManaged public var latlng: String?
     @NSManaged public var demonym: String?
-    @NSManaged public var area: Double
+    @NSManaged public var area: Float
     @NSManaged public var gini: Float
     @NSManaged public var nativeName: String?
     @NSManaged public var numericCode: String?
@@ -36,7 +36,7 @@ extension CountryEntity {
     @NSManaged public var cioc: String?
     @NSManaged public var storedOffline: Bool
     @NSManaged public var borders: NSSet?
-    @NSManaged public var gps: CountryLatLongEntity?
+    @NSManaged public var gps: GpsEntity?
     @NSManaged public var altSpelling: NSSet?
     @NSManaged public var callingCodes: NSSet?
     @NSManaged public var currencies: NSSet?

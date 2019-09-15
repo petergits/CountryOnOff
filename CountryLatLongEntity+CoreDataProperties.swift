@@ -2,7 +2,7 @@
 //  CountryLatLongEntity+CoreDataProperties.swift
 //  
 //
-//  Created by Peter Adient Gits on 9/14/19.
+//  Created by Peter Gits on 9/15/19.
 //
 //
 
@@ -18,6 +18,6 @@ extension CountryLatLongEntity {
 
     @NSManaged public var lattitude: Float
     @NSManaged public var longitude: Float
-    @NSManaged public var country: CountryEntity
+    @NSManaged public var country: CountryEntity?
 
 }

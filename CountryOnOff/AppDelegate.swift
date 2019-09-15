@@ -153,7 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public func importCountries()->Void {
         let countryFetch = self.fetchedCountries()
         var countries : CountryEntity? = nil
-        if countries > 0 {
+        if countryFetch > 0 {
             countries = countryFetch[0]
         }
         
@@ -175,14 +175,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if theType == "name" {
                     print("theDetails = \(theDetails)\n")
                     countryEntity.name         = theDetails["name"] as? String
+                }else if theType == "alpha2Code" {
                     countryEntity.alpha2Code   = theDetails["alpha2code"] as? String
+                }else if theType == "alpha3code" {
                     countryEntity.alpha3Code   = theDetails["alpha3code"] as? String
+                }else if theType == "capital" {
                     countryEntity.capital      = theDetails["capital"] as? String
+                }else if theType == "region" {
                     countryEntity.region       = theDetails["region"] as? String
+                }else if theType == "subregion" {
                     countryEntity.subregion    = theDetails["subregion"] as? String
+                }else if theType == "population" {
                     countryEntity.population   = theDetails["population"] as? Double ?? 0
-                    
-                    
+                }else if theType == "gini" {
+                    countryEntity.gini   = theDetails["gini"] as? Double ?? 0
+                }else if theType == "demonym" {
+                    countryEntity.demonym = theDetails["demonym"] as? String
+                }else if theType == "area" {
+                    countryEntity.area = theDetails["area"] as? Float
+                }else if theType == "nativeName" {
+                    countryEntity.nativeName = theDetails["nativeName"] as? String
+                }else if theType == "numericCode" {
+                    countryEntity.numericCode = theDetails["numericCode"] as? Float
                 }else if theType == "callingCodes" {
                     let codesArray = theDetails["callingCodes"] as! NSArray
                     for arrayElement in codesArray {
@@ -196,136 +210,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         for arrayElement in codesArray {
                             let alternateSpellingEntity:AlternateSpellingEntity = NSEntityDescription.insertNewObject(forEntityName: "AlternateSpellingEntity", into: self.getManagedContext()) as! AlternateSpellingEntity
                             alternateSpellingEntity.altSpell = arrayElement as? String
-                            countryEntity.addToAltSpelling(alternameSpellingEntity)
+                            countryEntity.addToAltSpelling(alternateSpellingEntity)
                             alternateSpellingEntity.country  = countryEntity
                         }
                 }else if theType == "latlng" {
                     let codesArray = theDetails["latlng"] as! NSArray
                     
-                        let countryLatLongEntity:CountryLatLongEntity = NSEntityDescription.insertNewObject(forEntityName: "CountryLatLongEntity", into: self.getManagedContext()) as! CountryLatLongEntity
-                        int i = 0
-                         {
-                            if i == 0 {
-                        countryLatLongEntity.lattitude = codesArray[0] as? String
-                        countryEntity.addToAltSpelling(alternameSpellingEntity)
+                    let countryLatLongEntity:GpsEntity = NSEntityDescription.insertNewObject(forEntityName: "GpsEntity", into: self.getManagedContext()) as! GpsEntity
+                    countryLatLongEntity.lattitude = codesArray[0] as? Float ?? 0.0
+                    countryLatLongEntity.longitude = codesArray[1] as? Float ?? 0.0
+                        countryEntity.gps = countryLatLongEntity
                         countryLatLongEntity.country  = countryEntity
-                    }
-                        
-                        let countryLatLongEntity:CountryLatLongEntity = NSEntityDescription.insertNewObject(forEntityName: "CountryLatLongEntity", into: self.getManagedContext()) as! CountryLatLongEntity
-                        
-                        let currenciesEntity:CurrenciesEntity = NSEntityDescription.insertNewObject(forEntityName: "CurrenciesEntity", into: self.getManagedContext()) as! CurrenciesEntity
-
-                        let languagesEntity:LanguagesEntity = NSEntityDescription.insertNewObject(forEntityName: "LanguagesEntity", into: self.getManagedContext()) as! LanguagesEntity
-                        
-                        let regionalBlocksEntity:RegionalBlocksEntity = NSEntityDescription.insertNewObject(forEntityName: "RegionalBlocksEntity", into: self.getManagedContext()) as! RegionalBlocksEntity
-
+                }else if theType == "timezones" {
+                    let codesArray = theDetails["timezones"] as! NSArray
+                    for arrayElement in codesArray {
                         let timezonesEntity:TimezonesEntity = NSEntityDescription.insertNewObject(forEntityName: "TimezonesEntity", into: self.getManagedContext()) as! TimezonesEntity
-
-                        let translationsEntity:TranslationsEntity = NSEntityDescription.insertNewObject(forEntityName: "TranslationsEntity", into: self.getManagedContext()) as! TranslationsEntity
-
-                        plantEntity.plantAddress = addressEntity
-                        addressEntity.plant = plantEntity
-                        let resourceCategoryEntity:ResourceCategoryEntity = NSEntityDescription.insertNewObject(forEntityName: "ResourceCategoryEntity", into: self.getManagedContext()) as! ResourceCategoryEntity
-                        resourceCategoryEntity.id = plantStartingId
-                        plantStartingId += 1
-                        resourceCategoryEntity.type = "plant"
-                        resourceCategoryEntity.plants = plantEntity
-                        if parentCompany != nil {
-                            plantEntity.parentCompany = parentCompany
-                        }
-                        
-                        let myHeadDictionary = arrayElement as! Dictionary<String, AnyObject>
-                        
-                        let props = myHeadDictionary["properties"]
-                        
-                        let longitude = props?["Longitude"] as? Double
-                        let latitude  = props?["Latitude"] as? Double
-                        if latitude != nil && longitude != nil {
-                            print("latitude = \(latitude!), longitude = \(longitude!)\n")
-                            addressEntity.gpsLatitude  = latitude!
-                            addressEntity.gpsLongitude = longitude!
-                            addressEntity.gpsRadius    = 2000.0
-                        }
-                        if let phoneNumber = props?["Phone"] as? String {
-                            print("phoneNumber: \(phoneNumber)")
-                            plantEntity.phone = phoneNumber
-                        }
-                        let plantName = props?["Plant"] as! String
-                        print("plantName:\(plantName)")
-                        plantEntity.name = plantName
-                        resourceCategoryEntity.name = plantName
-                        
-                        let region = props?["Region"] as! String
-                        print("region:\(region)")
-                        plantEntity.region = region
-                        let multipleBuildings = props?["Multiple Buildings?"] as! String
-                        print("multipleBuildings: \(multipleBuildings)")
-                        if multipleBuildings == "0" {
-                            plantEntity.multipleBuildings = false
-                        }else {
-                            plantEntity.multipleBuildings = true
-                        }
-                        let viewMap = props?["ViewMap"] as! String
-                        print("viewMap: \(viewMap)")
-                        plantEntity.viewMapGeo = viewMap
-                        if let iTManagedBy = props?["IT Managed By"] as? String {
-                            print("iTManagedBy: \(iTManagedBy)")
-                            plantEntity.iTManagedBy = iTManagedBy
-                        }
-                        let isActive = props?["Active?"] as! String
-                        print("isActive: \(isActive)")
-                        if isActive == "0" {
-                            plantEntity.active = false
-                        }else {
-                            plantEntity.active = true
-                        }
-                        
-                        if let city = props?["City"] as? String {
-                            print("city: \(city)")
-                            addressEntity.city = city
-                        }
-                        if let leadIT = props?["Lead IT"] as? String {
-                            print("leadIT: \(leadIT)")
-                            plantEntity.leadIT = leadIT
-                        }
-                        let state = props?["State"] as! String
-                        print("state: \(state)")
-                        addressEntity.stateOrProvince = state
-                        let zipCode = props?["Zipcode"] as! String
-                        print("zipCode: \(zipCode)")
-                        addressEntity.postalCode   = zipCode
-                        if let customerGroup = props?["Customer Group"] as? String {
-                            print("customerGroup: \(customerGroup)")
-                            plantEntity.customerGroup = customerGroup
-                        }
-                        let country = props?["Country"] as! String
-                        print("country: \(country)")
-                        addressEntity.countryCode  = country
-                        let streetAddress = props?["Street Address"] as! String
-                        print("streetAddress: \(streetAddress)")
-                        addressEntity.streetName1 = streetAddress
-                        let productGroupOrg = props?["Product Group Org"] as! String
-                        print("productGroupOrg: \(productGroupOrg)")
-                        plantEntity.productGroupOrg = productGroupOrg
-                        if let additionalAddresses = props?["Additional addresses"] as? String {
-                            print(additionalAddresses)
-                            plantEntity.additionalAddresses = additionalAddresses
-                        }
-                        if let telecomId = props?["Telecom ID"] as? String {
-                            print("telecomId: \(telecomId)")
-                            plantEntity.telecomId = Int64(telecomId)!//Int64(string:telecomId)
-                        }
-                        if let pgItManager = props?["PG IT Manager"] as? String {
-                            print("pgItManager: \(pgItManager)")
-                            plantEntity.pgItManager = pgItManager
-                        }
-                        if let regionItManager = props?["Region IT Manager"] as? String {
-                            print("regionItManager: \(regionItManager)")
-                            plantEntity.regionITManager = regionItManager
-                        }
+                        timezonesEntity.timezone = arrayElement as? String
+                        countryEntity.addToTimeZones(timezonesEntity)
+                        timezonesEntity.country   = countryEntity
                     }
+                }else if theType == "borders" {
+                    let codesArray = theDetails["borders"] as! NSArray
+                    for arrayElement in codesArray {
+                        let bordersEntity:BordersEntity = NSEntityDescription.insertNewObject(forEntityName: "BordersEntity", into: self.getManagedContext()) as! BordersEntity
+                        bordersEntity.borderName = arrayElement as? String
+                        countryEntity.addToBorders(bordersEntity)
+                        bordersEntity.country   = countryEntity
+                    }
+                }else if theType == "currencies" {
+                        let currenciesEntity:CurrenciesEntity = NSEntityDescription.insertNewObject(forEntityName: "CurrenciesEntity", into: self.getManagedContext()) as! CurrenciesEntity
+                }else if theType == "languages" {
+                        let languagesEntity:LanguagesEntity = NSEntityDescription.insertNewObject(forEntityName: "LanguagesEntity", into: self.getManagedContext()) as! LanguagesEntity
+                }else if theType == "regionalBlocks" {
+                        let regionalBlocksEntity:RegionalBlocksEntity = NSEntityDescription.insertNewObject(forEntityName: "RegionalBlocksEntity", into: self.getManagedContext()) as! RegionalBlocksEntity
+                }else if theType == "translations" {
+                        let translationsEntity:TranslationsEntity = NSEntityDescription.insertNewObject(forEntityName: "TranslationsEntity", into: self.getManagedContext()) as! TranslationsEntity
                 }
-            }
+                    
         } catch let error as NSError {
             print("Failed to load: \(error.localizedDescription)")
         }
