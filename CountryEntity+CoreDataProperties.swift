@@ -2,7 +2,7 @@
 //  CountryEntity+CoreDataProperties.swift
 //  
 //
-//  Created by Peter Gits on 9/15/19.
+//  Created by Peter Adient Gits on 9/15/19.
 //
 //
 

@@ -195,6 +195,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     countryEntity.area = theDetails["area"] as? Float
                 }else if theType == "nativeName" {
                     countryEntity.nativeName = theDetails["nativeName"] as? String
+                }else if theType == "flag" {
+                    countryEntity.flag = theDetails["flag"] as? String
                 }else if theType == "numericCode" {
                     countryEntity.numericCode = theDetails["numericCode"] as? Float
                 }else if theType == "callingCodes" {
@@ -238,15 +240,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         bordersEntity.country   = countryEntity
                     }
                 }else if theType == "currencies" {
+                    let codesArray = theDetails["currencies"] as! NSArray
+                    for arrayElement in codesArray {
                         let currenciesEntity:CurrenciesEntity = NSEntityDescription.insertNewObject(forEntityName: "CurrenciesEntity", into: self.getManagedContext()) as! CurrenciesEntity
+                        let myDictionary = arrayElement as! Dictionary<String, AnyObject>
+                        currenciesEntity.code = myDictionary["code"] as? String
+                        currenciesEntity.name = myDictionary["name"] as? String
+                        currenciesEntity.symbol = myDictionary["symbol"] as? String
+                        countryEntity.addToCurrencies(currenciesEntity)
+                        currenciesEntity.country = countryEntity
+                    }
                 }else if theType == "languages" {
+                    let codesArray = theDetails["languages"] as! NSArray
+                    for arrayElement in codesArray {
                         let languagesEntity:LanguagesEntity = NSEntityDescription.insertNewObject(forEntityName: "LanguagesEntity", into: self.getManagedContext()) as! LanguagesEntity
-                }else if theType == "regionalBlocks" {
-                        let regionalBlocksEntity:RegionalBlocksEntity = NSEntityDescription.insertNewObject(forEntityName: "RegionalBlocksEntity", into: self.getManagedContext()) as! RegionalBlocksEntity
+                        let myDictionary = arrayElement as! Dictionary<String, AnyObject>
+                        languagesEntity.iso639_1 = myDictionary["iso639_1"] as? String
+                        languagesEntity.iso639_2 = myDictionary["iso639_2"] as? String
+                        languagesEntity.name = myDictionary["name"] as? String
+                        languagesEntity.nativeName = myDictionary["nativeName"] as? String
+                        countryEntity.addToLanguages(languagesEntity)
+                        languagesEntity.country = countryEntity
+                    }
                 }else if theType == "translations" {
+                    let codesArray = theDetails["translations"] as! NSArray
+                    for arrayElement in codesArray {
                         let translationsEntity:TranslationsEntity = NSEntityDescription.insertNewObject(forEntityName: "TranslationsEntity", into: self.getManagedContext()) as! TranslationsEntity
+                        let myDictionary = arrayElement as! Dictionary<String, AnyObject>
+                        translationsEntity.de = myDictionary["de"] as? String
+                        translationsEntity.es = myDictionary["es"] as? String
+                        translationsEntity.fr = myDictionary["fr"] as? String
+                        translationsEntity.ja = myDictionary["ja"] as? String
+                        translationsEntity.it = myDictionary["it"] as? String
+                        translationsEntity.br = myDictionary["br"] as? String
+                        translationsEntity.pt = myDictionary["pt"] as? String
+                        translationsEntity.nl = myDictionary["nl"] as? String
+                        translationsEntity.hr = myDictionary["hr"] as? String
+                        translationsEntity.fa = myDictionary["fa"] as? String
+                        countryEntity.addToLanguages(translationsEntity)
+                        translationsEntity.country = countryEntity
                 }
-                    
+               }else if theType == "regionalBlocs" {
+                    let codesArray = theDetails["translations"] as! NSArray
+                    for arrayElement in codesArray {
+                       let regionalBlocksEntity:RegionalBlocksEntity = NSEntityDescription.insertNewObject(forEntityName: "RegionalBlocksEntity", into: self.getManagedContext()) as! RegionalBlocksEntity
+                        let myDictionary = arrayElement as! Dictionary<String, AnyObject>
+                        regionalBlocksEntity.regionalBlockName = myDictionary["acronym"] as? String
+                        regionalBlocksEntity.name = myDictionary["name"] as? String
+                        countryEntity.addToRegionalBlocks(regionalBlocksEntity)
+                        regionalBlocksEntity.country = countryEntity
+                    }
+                }
+            }//end of the for loop
         } catch let error as NSError {
             print("Failed to load: \(error.localizedDescription)")
         }

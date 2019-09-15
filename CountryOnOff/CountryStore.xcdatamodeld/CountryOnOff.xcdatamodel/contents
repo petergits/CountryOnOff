@@ -40,7 +40,7 @@
         <relationship name="languages" toMany="YES" deletionRule="Nullify" destinationEntity="LanguagesEntity" inverseName="country" inverseEntity="LanguagesEntity" syncable="YES"/>
         <relationship name="regionalBlocks" toMany="YES" deletionRule="Nullify" destinationEntity="RegionalBlocksEntity" inverseName="country" inverseEntity="RegionalBlocksEntity" syncable="YES"/>
         <relationship name="timeZones" toMany="YES" deletionRule="Nullify" destinationEntity="TimezonesEntity" inverseName="country" inverseEntity="TimezonesEntity" syncable="YES"/>
-        <relationship name="translations" toMany="YES" deletionRule="Nullify" destinationEntity="TransalationsEntity" inverseName="country" inverseEntity="TransalationsEntity" syncable="YES"/>
+        <relationship name="translations" toMany="YES" deletionRule="Nullify" destinationEntity="TranslationsEntity" inverseName="country" inverseEntity="TranslationsEntity" syncable="YES"/>
     </entity>
     <entity name="CurrenciesEntity" representedClassName=".CurrenciesEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
@@ -67,7 +67,7 @@
         <attribute name="timezone" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="timeZones" inverseEntity="CountryEntity" syncable="YES"/>
     </entity>
-    <entity name="TransalationsEntity" representedClassName=".TransalationsEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
+    <entity name="TranslationsEntity" representedClassName=".TransalationsEntity" parentEntity="CountryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="country" maxCount="1" deletionRule="Nullify" destinationEntity="CountryEntity" inverseName="translations" inverseEntity="CountryEntity" syncable="YES"/>
@@ -120,7 +120,7 @@
         <element name="BordersEntity" positionX="-895.9453125" positionY="-17176.78125" width="128" height="73"/>
         <element name="CurrenciesEntity" positionX="-934.31640625" positionY="-17076.125" width="128" height="103"/>
         <element name="LanguagesEntity" positionX="-909.02734375" positionY="-16946.83203125" width="128" height="103"/>
-        <element name="TransalationsEntity" positionX="-568.93359375" positionY="-16769.4609375" width="128" height="88"/>
+        <element name="TranslationsEntity" positionX="-568.93359375" positionY="-16769.4609375" width="128" height="88"/>
         <element name="RegionalBlocksEntity" positionX="-421.375" positionY="-16830.4140625" width="128" height="73"/>
     </elements>
 </model>
