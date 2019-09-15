@@ -265,19 +265,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }else if theType == "translations" {
                     let codesArray = theDetails["translations"] as! NSArray
                     for arrayElement in codesArray {
-                        let translationsEntity:TranslationsEntity = NSEntityDescription.insertNewObject(forEntityName: "TranslationsEntity", into: self.getManagedContext()) as! TranslationsEntity
+                        let translationsEntity:TransalationsEntity = NSEntityDescription.insertNewObject(forEntityName: "TranslationsEntity", into: self.getManagedContext()) as! TransalationsEntity
                         let myDictionary = arrayElement as! Dictionary<String, AnyObject>
-                        translationsEntity.de = myDictionary["de"] as? String
-                        translationsEntity.es = myDictionary["es"] as? String
-                        translationsEntity.fr = myDictionary["fr"] as? String
-                        translationsEntity.ja = myDictionary["ja"] as? String
-                        translationsEntity.it = myDictionary["it"] as? String
-                        translationsEntity.br = myDictionary["br"] as? String
-                        translationsEntity.pt = myDictionary["pt"] as? String
-                        translationsEntity.nl = myDictionary["nl"] as? String
-                        translationsEntity.hr = myDictionary["hr"] as? String
-                        translationsEntity.fa = myDictionary["fa"] as? String
-                        countryEntity.addToLanguages(translationsEntity)
+                        let codeKeys = myDictionary.Keys
+                        for theCode in codeKeys {
+                            translationsEntity.code = theCode as? String
+                            translationsEntity.translation = myDictionary[translation.code] as? String
+                        //translationsEntity.de = myDictionary["de"] as? String
+                        //translationsEntity.es = myDictionary["es"] as? String
+                        //translationsEntity.fr = myDictionary["fr"] as? String
+                        //translationsEntity.ja = myDictionary["ja"] as? String
+                        //translationsEntity.it = myDictionary["it"] as? String
+                        //translationsEntity.br = myDictionary["br"] as? String
+                        //translationsEntity.pt = myDictionary["pt"] as? String
+                        //translationsEntity.nl = myDictionary["nl"] as? String
+                        //translationsEntity.hr = myDictionary["hr"] as? String
+                        //translationsEntity.fa = myDictionary["fa"] as? String
+                        countryEntity.addToTranslations(translationsEntity)
                         translationsEntity.country = countryEntity
                 }
                }else if theType == "regionalBlocs" {
