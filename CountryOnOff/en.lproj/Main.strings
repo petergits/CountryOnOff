@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "N55-lZ-mKD"; */
+"N55-lZ-mKD.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "VOY-Kf-8OJ"; */
+"VOY-Kf-8OJ.title" = "Settings";
+
+/* Class = "UITabBarItem"; title = "My location"; ObjectID = "d4P-Pa-9sD"; */
+"d4P-Pa-9sD.title" = "My location";
+
+/* Class = "UISearchBar"; placeholder = "Search country"; ObjectID = "hKZ-3Q-cN5"; */
+"hKZ-3Q-cN5.placeholder" = "Search country";
+
+/* Class = "UITabBarItem"; title = "Places"; ObjectID = "nPp-UK-DLo"; */
+"nPp-UK-DLo.title" = "Places";

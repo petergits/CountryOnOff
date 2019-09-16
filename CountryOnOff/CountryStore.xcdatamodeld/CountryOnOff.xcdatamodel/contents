@@ -29,7 +29,7 @@
         <attribute name="numericCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="population" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="storedOffline" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="storedFlag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="subregion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="topLevelDomain" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="altSpelling" toMany="YES" deletionRule="Nullify" destinationEntity="AlternateSpellingEntity" inverseName="country" inverseEntity="AlternateSpellingEntity" syncable="YES"/>

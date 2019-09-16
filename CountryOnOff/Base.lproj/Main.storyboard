@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GFg-At-pwL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GFg-At-pwL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,7 +17,7 @@
         <!--Places-->
         <scene sceneID="T85-2j-n0a">
             <objects>
-                <viewController id="dJp-H4-5do" customClass="PlacesViewController" customModule="CountryOnOff" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dJp-H4-5do" customClass="CountriesViewController" customModule="CountryOnOff" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6bz-l0-d7W"/>
                         <viewControllerLayoutGuide type="bottom" id="6mN-dV-oh4"/>
@@ -40,14 +40,14 @@
                                 <rect key="frame" x="0.0" y="108" width="375" height="510"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="placeCell" rowHeight="60" id="aZq-kz-jOo" customClass="PlaceTableViewCell" customModule="CountryOnOff" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="countryCell" rowHeight="60" id="aZq-kz-jOo" customClass="CountryTableViewCell" customModule="CountryOnOff" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aZq-kz-jOo" id="HpG-GV-jtI">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N55-lZ-mKD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N55-lZ-mKD" userLabel="Country Lbl">
                                                     <rect key="frame" x="65" y="10" width="290" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="yPr-1s-leM"/>
@@ -56,7 +56,7 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeslocationicon" translatesAutoresizingMaskIntoConstraints="NO" id="225-Vk-4ci">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Places On" translatesAutoresizingMaskIntoConstraints="NO" id="225-Vk-4ci" userLabel="Country Img View">
                                                     <rect key="frame" x="20" y="12.5" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="CuE-MA-3sC"/>
@@ -238,9 +238,9 @@
     <resources>
         <image name="My Locations On" width="24" height="24"/>
         <image name="My location off" width="24" height="24"/>
+        <image name="Places On" width="24" height="24"/>
         <image name="Places off" width="24" height="24"/>
         <image name="Places on" width="24" height="24"/>
-        <image name="Placeslocationicon" width="48" height="48"/>
         <image name="Settings On" width="24" height="24"/>
         <image name="Settings off" width="24" height="24"/>
     </resources>

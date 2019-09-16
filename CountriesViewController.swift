@@ -260,7 +260,7 @@ extension CountriesViewController: UITableViewDelegate {
         searchBar.resignFirstResponder()
         let currentCountry = fetchedResultsController.object(at: indexPath)
         
-        if (currentCountry.storedOffline == true) {
+        if (currentCountry.storedFlag == true) {
             let lat = currentCountry.gps?.latitude
             let long = currentCountry.gps?.longitude
             let flagUrl = currentCountry.flag
@@ -305,7 +305,7 @@ extension CountriesViewController: SwipeTableViewCellDelegate {
                 print("directions")
                 
                 //go to direction
-                if (currentCountry.storedOffline == true) {
+                if (currentCountry.storedFlag == true) {
                     let lat = currentCountry.gps?.latitude
                     let long = currentCountry.gps?.longitude
                     //let placeStr = (currentPlace.plants?.plantAddress?.city!)! + " " + (currentPlace.plants?.plantAddress?.streetName1)!

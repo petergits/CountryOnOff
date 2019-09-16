@@ -2,7 +2,7 @@
 //  CountryEntity+CoreDataProperties.swift
 //  
 //
-//  Created by Peter Adient Gits on 9/15/19.
+//  Created by Peter Adient Gits on 9/16/19.
 //
 //
 
@@ -34,7 +34,7 @@ extension CountryEntity {
     @NSManaged public var numericCode: String?
     @NSManaged public var flagImage: NSData?
     @NSManaged public var cioc: String?
-    @NSManaged public var storedOffline: Bool
+    @NSManaged public var storedFlag: Bool
     @NSManaged public var borders: NSSet?
     @NSManaged public var gps: GpsEntity?
     @NSManaged public var altSpelling: NSSet?
